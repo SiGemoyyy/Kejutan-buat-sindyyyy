@@ -6,10 +6,6 @@
   <title>Kok Bisa Kamu Selucu Itu?</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <meta property="og:title" content="Kok Bisa Kamu Selucu Itu?" />
-  <meta property="og:description" content="Ucapan ulang tahun paling gemoy, chaotic, dan manis untuk Sindy Imooeett!" />
-  <meta property="og:image" content="thumbnail-untuk-share.png" />
-  <meta property="og:type" content="website" />
   <style>
     body {
       background: linear-gradient(to bottom right, #ffe6f0, #f3e8ff);
@@ -33,9 +29,6 @@
       border-radius: 16px;
     }
     .cake-img {
-      display: block;
-      margin: 20px auto;
-      max-width: 300px;
       animation: fadeIn 1s ease-in-out;
     }
     @keyframes fadeIn {
@@ -67,12 +60,10 @@
         margin: 10px 0;
       }
     }
-
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
     @keyframes swing {
       0% { transform: rotate(0deg); }
       25% { transform: rotate(2deg); }
@@ -80,21 +71,17 @@
       75% { transform: rotate(-2deg); }
       100% { transform: rotate(0deg); }
     }
-
     @keyframes sparkle {
       0% { transform: scale(1); filter: brightness(1); }
       50% { transform: scale(1.05); filter: brightness(1.3); }
       100% { transform: scale(1); filter: brightness(1); }
     }
-
     img.animate-blink:hover {
       animation: blink 1s infinite;
     }
-
     img.animate-swing:hover {
       animation: swing 1.2s infinite ease-in-out;
     }
-
     img.animate-sparkle {
       animation: sparkle 1.5s infinite;
     }
@@ -105,9 +92,8 @@
     <h1>Kok Bisa Kamu Selucu Itu?</h1>
     <img id="mainImage" src="file_000000003a0461f88103dc425735c1f9.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" class="animate-blink animate-swing" />
     
-    <p><span role="img" aria-label="surat cinta">💌</span> Cerita kocak Sindy Imooeett:</p>
-    <p><strong>
-      “Roti Manis, Gosong, dan Si Gemoy yang Gagal Bareng Tapi Bahagia”<br><br>
+    <p>💌 Cerita kocak Sindy Imooeett:</p>
+    <p><strong>“Roti Manis, Gosong, dan Si Gemoy yang Gagal Bareng Tapi Bahagia”<br><br>
       Untuk Sindy Imooeett, si gadis berhijab paling chaotic, lembut di hati, dan penuh drama menggemaskan…<br><br>
       Awalnya kupikir itu hari biasa.<br>
       Pelatihan bikin roti manis, belajar ngulen, tunggu proofing, terus pulang.<br>
@@ -117,7 +103,7 @@
       Kamu melihatku, lalu berbisik pelan:<br><br>
       <em>“Gemoy... rotiku gagal... aku kayaknya juga gagal hidup...”</em><br><br>
       Aku nggak bisa jawab. Karena pas itu... rotiku juga gosong.<br>
-      Dua roti bersaudara. Dua hati yang penuh arang.<br><br>
+      Dua roti bersaudara. Dua hati yang penuh arang. 😔🍞<br><br>
       Lalu datanglah sang accessor, berdiri kayak tokoh antagonis sinetron masak.<br><br>
       <em>“Roti yang gosong dan tidak matang sempurna bisa memengaruhi kelulusan ujian ini.”</em><br><br>
       Sindy langsung freeze.<br>
@@ -126,8 +112,10 @@
       <em>“Aku... nggak lulus...? Karena rotiku...?”</em><br><br>
       Tapi tiba-tiba accessor lanjut:<br><br>
       <em>“Tapi karena semangat dan prosesmu luar biasa... kamu tetap LULUS!”</em><br><br>
-      Dan Sindy Imooeett pun... menangis sesenggukan.<br>
-      Beneran nangis beneran. Kayak adegan drama Korea episode 14.<br><br>
+      Dan Sindy Imooeett pun...<br><br>
+      Menangis sesenggukan.<br>
+      Beneran nangis beneran.<br>
+      Kayak adegan drama Korea episode 14.<br><br>
       Kamu duduk pelan, air mata jatuh sambil lihat roti gosong di tanganmu.<br>
       Aku duduk di sebelahmu, nyodorin rotiku yang sama-sama gosong, lalu bilang:<br><br>
       <em>“Nih… rotiku juga gosong… tapi rasanya manis… karena ada kamu.”</em><br><br>
@@ -137,7 +125,7 @@
       Sindy Imooeett bukan cuma gadis yang dramanya bisa satu season penuh,<br>
       tapi juga gadis yang berhasil bikin hatiku ngembang sempurna setiap hari.<br><br>
       Selamat ulang tahun yaa, Imooeett~<br>
-      Semoga hidupmu kayak roti: hangat, manis, dan selalu bikin orang di sekitarmu bahagia meski kadang pinggirnya gosong sedikit<br><br>
+      Semoga hidupmu kayak roti: hangat, manis, dan selalu bikin orang di sekitarmu bahagia meski kadang pinggirnya gosong sedikit 💖<br><br>
       Dari si Gemoy,<br>
       Jimmy – chef gagal, tapi pacar dengan hati level Michelin 🌟
     </strong></p>
@@ -151,23 +139,14 @@
 
   <audio id="bg-music" autoplay muted loop>
     <source src="happy-birthday-my-kitty-120918.mp3" type="audio/mpeg" />
-    <p>Browser kamu belum bisa mutar musik lucu ini.</p>
+    Browser kamu belum bisa mutar musik lucu ini.
   </audio>
 
   <script>
     const bgMusic = document.getElementById("bg-music");
+    bgMusic.muted = true;
 
     window.addEventListener("DOMContentLoaded", () => {
-      const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          document.body.addEventListener("click", () => {
-            bgMusic.muted = false;
-            bgMusic.play();
-          }, { once: true });
-        });
-      }
-
       confetti({
         particleCount: 150,
         spread: 100,
@@ -186,10 +165,11 @@
 
       document.querySelector(".container").appendChild(cakeImg);
 
-      if (bgMusic.muted || bgMusic.paused) {
-        bgMusic.muted = false;
-        bgMusic.play();
-      }
+      // Aktifkan musik saat klik tombol
+      bgMusic.muted = false;
+      bgMusic.play().catch(() => {
+        console.warn("Interaksi pengguna dibutuhkan untuk memutar musik");
+      });
     });
 
     const messages = [
