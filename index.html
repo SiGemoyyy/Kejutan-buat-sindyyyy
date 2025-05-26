@@ -65,7 +65,7 @@
 <body>
   <div class="container">
     <h1>Kok Bisa Kamu Selucu Itu?</h1>
-    <img id="mainImage" src="02eaa7c2-be1e-4226-a240-e005b5322caa.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" />
+    <img id="mainImage" src="file_000000003a0461f88103dc425735c1f9.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" />
     
     <p>💌 Cerita kocak Sindy Imooeett:</p>
     <p>
@@ -127,18 +127,8 @@
         Jimmy – chef gagal, tapi pacar dengan hati level Michelin 🌟
       </strong>
     </p>
+    
 
-    <audio controls>
-      <source src="voice_note_sindy.mp3" type="audio/mpeg">
-      Suara kamu nggak bisa diputar. Coba browser lain ya!
-    </audio>
-
-    <video controls poster="02eaa7c2-be1e-4226-a240-e005b5322caa.png">
-      <source src="MP4_20250526_132558_PHOTOMOVIE.mp4" type="video/mp4">
-      Video nggak bisa diputar? Tenang, nanti aku kirim langsung ke kamu!
-    </video>
-
-    <button id="bonusBtn">Klik Buat Bonus!</button>
     <button id="cakeBtn">Klik Buat Kue Cantik</button>
     <button id="secretBtn">Buka Pesan Rahasia</button>
     <button onclick="alert('Peluk virtual terkirim! Tapi kalau kamu mau yang nyata, tinggal panggil aja si Gemoy~')">Peluk Virtual</button>
@@ -172,19 +162,11 @@
       });
     });
 
-    document.getElementById("bonusBtn").addEventListener("click", () => {
-      const bonusImg = document.createElement("img");
-      bonusImg.src = "bonus-roti-hati.png";
-      bonusImg.alt = "Bonus Roti Bentuk Hati";
-      bonusImg.classList.add("bonus-img");
-      document.querySelector(".container").appendChild(bonusImg);
-    });
-
     document.getElementById("cakeBtn").addEventListener("click", () => {
       const cakeImg = document.createElement("img");
-      cakeImg.src = "kue-cantik.png";
+      cakeImg.src = "20250526_155431_0000.png";
       cakeImg.alt = "Kue Cantik Ulang Tahun";
-      cakeImg.classList.add("cake-img");
+      cakeImg.classList.add("20250526_155431_0000.png");
 
       const existingCake = document.querySelector(".container img.cake-img");
       if (existingCake) existingCake.remove();
