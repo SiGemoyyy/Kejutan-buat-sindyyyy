@@ -3,22 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Delights - Elegant Cake Shop</title>
+    <title>COOKING - Simple and Tasty Recipes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        :root {
-            --pink-pastel: #ffd6e0;
-            --pink-dark: #ff85a2;
-            --cream: #fff9f0;
-            --gold: #d4af37;
-            --white: #ffffff;
-            --text-dark: #333333;
-        }
-        
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -27,441 +17,573 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--cream);
             line-height: 1.6;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            color: #333;
+            background-color: #fff;
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .logo span {
+            color: #4CAF50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 500px;
         }
         
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background-color: var(--pink-dark);
-            color: var(--white);
-            border: none;
+            background-color: #4CAF50;
+            color: white;
             border-radius: 30px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
-            background-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+            background-color: #3e8e41;
+            transform: translateY(-2px);
         }
         
-        section {
-            padding: 80px 0;
+        .hero-image {
+            flex: 1;
+            text-align: center;
         }
         
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Recipes Section */
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
             font-size: 36px;
-            color: var(--text-dark);
-            position: relative;
+            color: #333;
+            margin-bottom: 15px;
         }
         
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--gold);
-            margin: 15px auto 0;
-        }
-        
-        /* Header / Hero Section */
-        header {
-            background-color: var(--pink-pastel);
-            padding: 100px 0 150px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background-image: url('#'); /* Placeholder for floral pattern */
-            background-size: contain;
-            opacity: 0.2;
-        }
-        
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-content h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-        
-        .hero-content p {
-            font-size: 20px;
-            margin-bottom: 40px;
+        .section-title p {
+            color: #777;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
         
-        .cake-images {
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-        }
-        
-        .cake-images img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin: 0 15px;
-            border-radius: 50%;
-            border: 5px solid var(--white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Featured Products Section */
-        .featured-products {
-            background-color: var(--white);
-            padding: 100px 0;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-        
-        .product-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .product-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .product-card p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-        
-        /* Holiday Collection Section */
-        .holiday-collection {
-            background-color: var(--pink-pastel);
-            text-align: center;
-            position: relative;
-            padding: 100px 0;
-        }
-        
-        .holiday-banner {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto 50px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .holiday-banner:before {
-            content: '20% OFF';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            background-color: var(--gold);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: bold;
-            transform: rotate(15deg);
-        }
-        
-        .holiday-banner h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .holiday-banner p {
-            margin-bottom: 25px;
-            font-size: 18px;
-        }
-        
-        .holiday-images {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .holiday-images img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 5px solid var(--white);
-        }
-        
-        .limited-time {
-            font-size: 14px;
-            color: var(--gold);
-            font-weight: bold;
-            margin-top: 20px;
-            display: block;
-        }
-        
-        /* Features Section */
-        .features {
-            background-color: var(--white);
+        .recipes {
             padding: 80px 0;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+        .recipe-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .recipe-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 25px;
             text-align: center;
         }
         
-        .feature-item {
-            padding: 30px;
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .feature-icon {
-            font-size: 50px;
-            color: var(--gold);
+        .recipe-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid #f5f5f5;
+        }
+        
+        .recipe-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .rating {
+            color: #FFC107;
+            margin-bottom: 10px;
+        }
+        
+        .recipe-card p {
+            color: #666;
+            font-size: 14px;
             margin-bottom: 20px;
         }
         
-        .feature-item h3 {
-            font-size: 22px;
+        .recipe-meta {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .meta-item i {
+            color: #4CAF50;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .meta-item span {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .service-item {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .service-item h3 {
+            font-size: 20px;
             margin-bottom: 15px;
         }
         
-        .feature-item p {
+        .service-item p {
             color: #666;
+            font-size: 14px;
+        }
+        
+        /* Story Section */
+        .story {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .story-content p {
+            color: #666;
+            margin-bottom: 30px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--pink-pastel);
-            padding: 60px 0 30px;
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
             text-align: center;
         }
         
-        .social-links {
-            margin-bottom: 40px;
-        }
-        
-        .social-links p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-        
-        .social-icons {
+        .footer-content {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--white);
-            color: var(--pink-dark);
-            border-radius: 50%;
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
             font-size: 20px;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            color: #4CAF50;
         }
         
-        .social-icons a:hover {
-            background-color: var(--gold);
-            color: var(--white);
-            transform: translateY(-5px);
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4CAF50;
         }
         
         .copyright {
-            margin-top: 30px;
-            color: #666;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            color: #aaa;
             font-size: 14px;
         }
         
         /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 48px;
+            .header-container {
+                flex-direction: column;
             }
             
-            .cake-images {
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 15px 10px;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .recipe-cards {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .cake-images img {
-                margin: 10px 0;
+            .recipe-card {
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .service-grid {
+                grid-template-columns: 1fr;
             }
             
-            .holiday-images {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            section {
-                padding: 60px 0;
+            .hero-text h1 {
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header / Hero Section -->
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Delight in Every Bite!</h1>
-                <p>Handcrafted artisanal cakes and pastries made with love and the finest ingredients</p>
-                <a href="#" class="btn">Order Now</a>
-                
-                <div class="cake-images">
-                    <img src="#" alt="Elegant Birthday Cake">
-                    <img src="#" alt="Beautiful Cupcakes">
-                    <img src="#" alt="Wedding Cake">
-                </div>
-            </div>
+        <div class="container header-container">
+            <a href="#" class="logo">COOK<span>ING</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Featured Products Section -->
-    <section class="featured-products">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>SIMPLE AND TASTY RECIPES</h1>
+                <p>Discover delicious recipes for every occasion. From quick weekday meals to impressive dinner party dishes, we've got you covered with our collection of tested recipes.</p>
+                <a href="#" class="btn">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Healthy food in bowl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="recipes">
         <div class="container">
-            <h2 class="section-title">Our Signature Creations</h2>
+            <div class="section-title">
+                <h2>Our Recipes</h2>
+                <p>Explore our collection of delicious and easy-to-make recipes for every occasion</p>
+            </div>
             
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <img src="#" alt="Custom Cakes">
-                    <h3>Custom Cakes</h3>
-                    <p>Bespoke celebration cakes designed to your exact specifications, perfect for weddings, birthdays, and special occasions.</p>
-                    <a href="#" class="btn">Order Today</a>
+            <div class="recipe-cards">
+                <!-- Recipe Card 1 -->
+                <div class="recipe-card">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sprout Salad" class="recipe-img">
+                    <h3>Sprout Salad with Soft Boiled Eggs</h3>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
+                    <p>A healthy and nutritious salad packed with protein and fresh vegetables.</p>
+                    <div class="recipe-meta">
+                        <div class="meta-item">
+                            <i>⏱️</i>
+                            <span>20 mins</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>👨‍🍳</i>
+                            <span>Easy</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>🍽️</i>
+                            <span>2 persons</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <img src="#" alt="Macarons">
-                    <h3>Macarons</h3>
-                    <p>Delicate French macarons in a rainbow of flavors, with crisp shells and luscious fillings that melt in your mouth.</p>
-                    <a href="#" class="btn">See Our Cakes</a>
+                <!-- Recipe Card 2 -->
+                <div class="recipe-card">
+                    <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chicken Curry" class="recipe-img">
+                    <h3>Chicken Curry</h3>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+                    <p>Aromatic and flavorful chicken curry with rich coconut milk and spices.</p>
+                    <div class="recipe-meta">
+                        <div class="meta-item">
+                            <i>⏱️</i>
+                            <span>45 mins</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>👨‍🍳</i>
+                            <span>Medium</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>🍽️</i>
+                            <span>4 persons</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <img src="#" alt="Cupcake Collections">
-                    <h3>Cupcake Collections</h3>
-                    <p>Artfully decorated cupcakes in seasonal flavors, available by the dozen for your next event or special treat.</p>
-                    <a href="#" class="btn">Order Today</a>
+                <!-- Recipe Card 3 -->
+                <div class="recipe-card">
+                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vegetable Salad" class="recipe-img">
+                    <h3>Vegetable Salad</h3>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
+                    <p>Fresh and crunchy vegetable salad with a light lemon dressing.</p>
+                    <div class="recipe-meta">
+                        <div class="meta-item">
+                            <i>⏱️</i>
+                            <span>15 mins</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>👨‍🍳</i>
+                            <span>Easy</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>🍽️</i>
+                            <span>2 persons</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Holiday Collection Section -->
-    <section class="holiday-collection">
+    <!-- Services Section -->
+    <section class="services">
         <div class="container">
-            <div class="holiday-banner">
-                <h2>Holiday Collection</h2>
-                <p>Celebrate the season with our special holiday treats, featuring festive flavors and decorations that will make your celebrations even sweeter.</p>
-                <a href="#" class="btn">Order Today</a>
-                <span class="limited-time">Limited time only</span>
+            <div class="section-title">
+                <h2>Our Awesome Services</h2>
+                <p>We provide the best services to make your cooking experience enjoyable and successful</p>
             </div>
             
-            <div class="holiday-images">
-                <img src="#" alt="Festive Cupcakes">
-                <img src="#" alt="Holiday Macarons">
+            <div class="service-grid">
+                <!-- Service 1 -->
+                <div class="service-item">
+                    <div class="service-icon">🍲</div>
+                    <h3>Quality Food</h3>
+                    <p>We provide only tested recipes with high-quality ingredients for best results.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-item">
+                    <div class="service-icon">🥬</div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>All our recipes use fresh, seasonal ingredients for maximum flavor.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-item">
+                    <div class="service-icon">🔥</div>
+                    <h3>Serve Hot</h3>
+                    <p>Detailed instructions on how to serve dishes at their perfect temperature.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-item">
+                    <div class="service-icon">👨‍🍳</div>
+                    <h3>Cook Like a Chef</h3>
+                    <p>Professional tips and techniques to elevate your cooking skills.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-item">
+                    <div class="service-icon">📝</div>
+                    <h3>Easy Recipes</h3>
+                    <p>Step-by-step instructions that anyone can follow, even beginners.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-item">
+                    <div class="service-icon">⏱️</div>
+                    <h3>Quick Meals</h3>
+                    <p>Collection of recipes that can be prepared in 30 minutes or less.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Story Section -->
+    <section class="story">
         <div class="container">
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Premium Ingredients</h3>
-                    <p>We use only the finest quality ingredients sourced from trusted suppliers to ensure exceptional taste and quality.</p>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Fast Delivery</h3>
-                    <p>Freshly made and carefully packaged for delivery to your door within 24 hours of ordering in most areas.</p>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Made With Love</h3>
-                    <p>Each creation is handcrafted with passion and attention to detail by our talented pastry chefs.</p>
-                </div>
+            <div class="story-content">
+                <h2>Discover Our Story</h2>
+                <p>Founded in 2015, COOKING started as a small blog sharing family recipes. What began as a passion project quickly grew into a community of food lovers from around the world. Our mission is to make cooking accessible to everyone, regardless of skill level.</p>
+                <p>We test each recipe multiple times to ensure it works in real home kitchens with ordinary equipment. Our team of chefs and food writers are dedicated to bringing you reliable, delicious recipes that you'll want to make again and again.</p>
+                <a href="#" class="btn">Learn More</a>
             </div>
         </div>
     </section>
@@ -469,17 +591,42 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                <p>Follow Us</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>COOKING</h3>
+                    <p>Simple and tasty recipes for everyone. Making cooking enjoyable and accessible.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Breakfast</a></li>
+                        <li><a href="#">Lunch</a></li>
+                        <li><a href="#">Dinner</a></li>
+                        <li><a href="#">Desserts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">hello@cooking.com</a></li>
+                        <li><a href="#">+1 234 567 890</a></li>
+                        <li><a href="#">123 Food St, Culinary City</a></li>
+                    </ul>
                 </div>
             </div>
-            
-            <p class="copyright">&copy; 2023 Sweet Delights. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2023 COOKING. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
-</html>
+    </html>
