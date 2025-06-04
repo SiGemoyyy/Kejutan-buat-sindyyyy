@@ -1,233 +1,277 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Delights - Toko Kue Pastel</title>
-    <meta name="description" content="Toko kue premium dengan desain pastel yang memikat. Temukan berbagai macam dessert lezat untuk setiap kesempatan.">
+    <title>Sweet Delights | Artisan Pastel Bakery</title>
+    <meta name="description" content="Discover our handcrafted pastel cakes, pastries and desserts made with love and premium ingredients">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Basic styling for visualization - to be moved to CSS file */
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            background-color: #fff9fb;
+            color: #5a4a42;
+        }
+        .decorative {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        .pastel-pink { background-color: #ffd6e0; }
+        .pastel-purple { background-color: #e0d4ff; }
+        .pastel-blue { background-color: #d4f0ff; }
+        .pastel-green { background-color: #d4ffea; }
+        .pastel-yellow { background-color: #fff9d4; }
+    </style>
 </head>
 <body>
+    <!-- Decorative elements -->
+    <div class="decorative pastel-pink" style="width: 100px; height: 100px; border-radius: 50%; top: 50px; left: 10%;"></div>
+    <div class="decorative pastel-yellow" style="width: 150px; height: 150px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; top: 200px; right: 5%;"></div>
+    <div class="decorative pastel-blue" style="width: 80px; height: 80px; border-radius: 50%; bottom: 100px; left: 15%;"></div>
+
     <!-- Header Section -->
-    <header class="header">
-        <nav class="navbar">
+    <header class="site-header">
+        <nav class="main-nav">
             <button class="hamburger-menu" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="fas fa-bars"></i>
             </button>
             
-            <h1 class="logo">Sweet Delights</h1>
+            <div class="logo-container">
+                <h1 class="logo">Sweet Delights</h1>
+            </div>
             
             <div class="nav-icons">
-                <button class="account-icon" aria-label="Account">
-                    <img src="placeholder-account.svg" alt="Account">
-                </button>
-                <button class="cart-icon" aria-label="Shopping cart">
-                    <img src="placeholder-cart.svg" alt="Cart">
+                <a href="#" class="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="#" class="cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
-                </button>
+                </a>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Where Sweet Dreams Become Delicious Reality</h2>
-            <div class="search-container">
-                <input type="text" placeholder="Let's Find A Perfect Dessert For You..." aria-label="Search desserts">
-                <button class="search-button">Search</button>
-            </div>
-        </div>
-        <img src="placeholder-donut-hero.jpg" alt="Colorful donuts" class="hero-image">
-        <div class="decorative cloud-1"></div>
-        <div class="decorative cloud-2"></div>
-        <div class="decorative strawberry"></div>
-    </section>
-
+    <!-- Main Content -->
     <main>
-        <!-- Kategori Produk -->
+        <!-- Hero Section -->
+        <section class="hero pastel-purple">
+            <div class="hero-content">
+                <h2 class="hero-title">Where Sweet Dreams Become Delicious Reality</h2>
+                <div class="search-container">
+                    <input type="text" placeholder="Let's Find A Perfect Dessert For You..." class="search-input">
+                    <button class="search-button">Search</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/800x500/ffd6e0/5a4a42?text=Colorful+Donuts" alt="Colorful donuts with sprinkles" class="hero-img">
+            </div>
+        </section>
+
+        <!-- Categories Section -->
         <section class="categories" id="categories">
-            <h2>Explore Our Goodies</h2>
-            <div class="category-slider">
+            <h2 class="section-title">Explore Our Goodies</h2>
+            <div class="categories-slider">
                 <div class="category-item">
-                    <img src="placeholder-cake-icon.svg" alt="Cakes">
+                    <i class="fas fa-birthday-cake"></i>
                     <span>Cakes</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-pastry-icon.svg" alt="Pastries">
+                    <i class="fas fa-cookie"></i>
                     <span>Pastries</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-bread-icon.svg" alt="Breads">
+                    <i class="fas fa-bread-slice"></i>
                     <span>Breads</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-cupcake-icon.svg" alt="Cupcakes">
+                    <i class="fas fa-cupcake"></i>
                     <span>Cupcakes</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-donut-icon.svg" alt="Donuts">
+                    <i class="fas fa-donate"></i>
                     <span>Donuts</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-macaron-icon.svg" alt="Macarons">
+                    <i class="fas fa-circle"></i>
                     <span>Macarons</span>
                 </div>
                 <div class="category-item">
-                    <img src="placeholder-croissant-icon.svg" alt="Croissants">
+                    <i class="fas fa-croissant"></i>
                     <span>Croissants</span>
                 </div>
             </div>
-            <div class="decorative leaf-1"></div>
         </section>
 
-        <!-- Produk Unggulan -->
-        <section class="featured-product">
-            <h2>Our Star Treat</h2>
+        <!-- Featured Product Section -->
+        <section class="featured-product pastel-green">
+            <h2 class="section-title">Our Star Treat</h2>
             <div class="product-showcase">
-                <img src="placeholder-blueberry-cake.jpg" alt="Blueberry Bliss Cake" class="product-image">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/500x500/ffd6e0/5a4a42?text=Blueberry+Bliss+Cake" alt="Blueberry Bliss Cake">
+                </div>
                 <div class="product-details">
-                    <h3>Blueberry Bliss Cake</h3>
-                    <p class="product-description">Lembutnya sponge cake vanilla dipadukan dengan blueberry segar dan buttercream yang ringan. Perpaduan sempurna antara manis dan asam yang akan memanjakan lidah Anda.</p>
-                    <p class="product-price">Rp 250.000</p>
+                    <h3 class="product-name">Blueberry Bliss Cake</h3>
+                    <p class="product-description">Our signature vanilla sponge cake layered with fresh blueberry compote and topped with cream cheese frosting. Each bite is a perfect balance of sweet and tart flavors.</p>
+                    <div class="product-price">$34.99</div>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            <div class="decorative berry"></div>
         </section>
 
-        <!-- Produk Pilihan -->
-        <section class="featured-products">
-            <h2>Our Featured Products</h2>
-            <div class="product-grid">
+        <!-- Products Grid Section -->
+        <section class="products-grid" id="products">
+            <h2 class="section-title">Our Featured Products</h2>
+            <div class="products-container">
                 <article class="product-card">
-                    <img src="placeholder-chocolate-croissant.jpg" alt="Chocolate Croissant">
-                    <h3>Chocolate Croissant</h3>
-                    <p class="price">Rp 35.000</p>
+                    <img src="https://via.placeholder.com/300x300/ffd6e0/5a4a42?text=Strawberry+Shortcake" alt="Strawberry Shortcake" class="product-image">
+                    <h3 class="product-name">Strawberry Shortcake</h3>
+                    <div class="product-price">$24.99</div>
                     <button class="quick-add">+</button>
                 </article>
                 
                 <article class="product-card">
-                    <img src="placeholder-strawberry-cupcake.jpg" alt="Strawberry Cupcake">
-                    <h3>Strawberry Cupcake</h3>
-                    <p class="price">Rp 45.000</p>
+                    <img src="https://via.placeholder.com/300x300/ffd6e0/5a4a42?text=Chocolate+Eclair" alt="Chocolate Eclair" class="product-image">
+                    <h3 class="product-name">Chocolate Éclair</h3>
+                    <div class="product-price">$3.99 each</div>
                     <button class="quick-add">+</button>
                 </article>
                 
                 <article class="product-card">
-                    <img src="placeholder-macarons-box.jpg" alt="Macarons Box">
-                    <h3>Macarons Box (6 pcs)</h3>
-                    <p class="price">Rp 120.000</p>
+                    <img src="https://via.placeholder.com/300x300/ffd6e0/5a4a42?text=Rainbow+Macarons" alt="Rainbow Macarons" class="product-image">
+                    <h3 class="product-name">Rainbow Macarons</h3>
+                    <div class="product-price">$12.99/dozen</div>
                     <button class="quick-add">+</button>
                 </article>
             </div>
-            <div class="decorative cloud-3"></div>
         </section>
 
-        <!-- Ulasan Pelanggan -->
-        <section class="testimonials">
-            <h2>Sweet Reviews</h2>
+        <!-- Testimonials Section -->
+        <section class="testimonials pastel-yellow">
+            <h2 class="section-title">Sweet Reviews</h2>
             <div class="reviews-container">
-                <div class="review">
-                    <img src="placeholder-avatar-1.jpg" alt="Customer avatar" class="avatar">
-                    <blockquote>
-                        <p>"The Blueberry Bliss Cake was the highlight of my birthday party! Everyone kept asking where I got it."</p>
-                        <cite>- Sarah T.</cite>
-                    </blockquote>
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/50x50/ffd6e0/5a4a42?text=AV" alt="Avatar" class="reviewer-avatar">
+                        <span class="reviewer-name">Jessica M.</span>
+                    </div>
+                    <p class="review-text">"The Blueberry Bliss Cake was the star of my daughter's birthday! So moist and flavorful. Will definitely order again!"</p>
                 </div>
                 
-                <div class="review">
-                    <img src="placeholder-avatar-2.jpg" alt="Customer avatar" class="avatar">
-                    <blockquote>
-                        <p>"Best croissants in town! I order them every weekend for my family breakfast."</p>
-                        <cite>- Michael L.</cite>
-                    </blockquote>
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/50x50/ffd6e0/5a4a42?text=AV" alt="Avatar" class="reviewer-avatar">
+                        <span class="reviewer-name">Michael T.</span>
+                    </div>
+                    <p class="review-text">"Best croissants in town! Perfectly flaky and buttery. My Saturday morning ritual now includes their almond croissant."</p>
                 </div>
                 
-                <div class="review">
-                    <img src="placeholder-avatar-3.jpg" alt="Customer avatar" class="avatar">
-                    <blockquote>
-                        <p>"Their macarons are to die for! The perfect balance of crispy and chewy with amazing flavors."</p>
-                        <cite>- Dian P.</cite>
-                    </blockquote>
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <img src="https://via.placeholder.com/50x50/ffd6e0/5a4a42?text=AV" alt="Avatar" class="reviewer-avatar">
+                        <span class="reviewer-name">Sarah K.</span>
+                    </div>
+                    <p class="review-text">"Ordered cupcakes for my office party and everyone raved about them. The lemon raspberry was a particular hit!"</p>
                 </div>
             </div>
-            <div class="decorative sprinkles"></div>
         </section>
 
-        <!-- Artikel Terbaru -->
-        <section class="blog-posts">
-            <h2>Our New Articles</h2>
-            <div class="articles-grid">
+        <!-- Blog Section -->
+        <section class="blog-section" id="blog">
+            <h2 class="section-title">Our New Articles</h2>
+            <div class="articles-container">
                 <article class="blog-card">
-                    <img src="placeholder-blog-1.jpg" alt="Blog post image">
-                    <time datetime="2023-05-15">May 15, 2023</time>
-                    <h3>5 Tips for Perfect Homemade Cupcakes</h3>
+                    <img src="https://via.placeholder.com/400x250/ffd6e0/5a4a42?text=Baking+Tips" alt="Baking Tips" class="blog-image">
+                    <div class="blog-meta">
+                        <time datetime="2023-05-15">May 15, 2023</time>
+                        <h3 class="blog-title">5 Tips for Perfect Cake Frosting Every Time</h3>
+                    </div>
                     <button class="read-more">Learn More</button>
                 </article>
                 
                 <article class="blog-card">
-                    <img src="placeholder-blog-2.jpg" alt="Blog post image">
-                    <time datetime="2023-05-08">May 8, 2023</time>
-                    <h3>The Art of French Pastry: A Beginner's Guide</h3>
+                    <img src="https://via.placeholder.com/400x250/ffd6e0/5a4a42?text=Seasonal+Flavors" alt="Seasonal Flavors" class="blog-image">
+                    <div class="blog-meta">
+                        <time datetime="2023-05-08">May 8, 2023</time>
+                        <h3 class="blog-title">Summer Special: Our New Mango Passionfruit Collection</h3>
+                    </div>
                     <button class="read-more">Learn More</button>
                 </article>
                 
                 <article class="blog-card">
-                    <img src="placeholder-blog-3.jpg" alt="Blog post image">
-                    <time datetime="2023-05-01">May 1, 2023</time>
-                    <h3>Seasonal Fruits for Summer Desserts</h3>
+                    <img src="https://via.placeholder.com/400x250/ffd6e0/5a4a42?text=Behind+Scenes" alt="Behind the Scenes" class="blog-image">
+                    <div class="blog-meta">
+                        <time datetime="2023-05-01">May 1, 2023</time>
+                        <h3 class="blog-title">Behind the Scenes: A Day in Our Bakery Kitchen</h3>
+                    </div>
                     <button class="read-more">Learn More</button>
                 </article>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Footer Section -->
+    <footer class="site-footer pastel-pink">
         <div class="footer-content">
-            <div class="contact-info">
-                <h3>Sweet Delights</h3>
+            <div class="footer-section contact-info">
+                <h3 class="footer-title">Sweet Delights</h3>
                 <address>
-                    Jl. Pastel Indah No. 123<br>
-                    Jakarta Selatan, 12345<br>
-                    Indonesia
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Pastel Avenue, Dessert City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> hello@sweetdelights.com</p>
                 </address>
-                <p>Email: hello@sweetdelights.com</p>
-                <p>Phone: +62 123 4567 890</p>
-                
-                <div class="social-media">
-                    <a href="#" aria-label="Instagram"><img src="placeholder-instagram.svg" alt="Instagram"></a>
-                    <a href="#" aria-label="Facebook"><img src="placeholder-facebook.svg" alt="Facebook"></a>
-                    <a href="#" aria-label="Twitter"><img src="placeholder-twitter.svg" alt="Twitter"></a>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             
-            <div class="newsletter">
-                <h3>Sweet Newsletter</h3>
-                <p>Subscribe for exclusive offers and dessert inspiration!</p>
-                <form>
-                    <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
-                    <button type="submit">Subscribe</button>
+            <div class="footer-section newsletter">
+                <h3 class="footer-title">Sweet Updates</h3>
+                <p>Subscribe to our newsletter for special offers and new treats!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
             </div>
             
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?placeholder" title="Sweet Delights Location" allowfullscreen></iframe>
+            <div class="footer-section map">
+                <h3 class="footer-title">Visit Us</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256892546!2d-73.9878446845938!3d40.7484404793279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMDkuOSJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
         
         <div class="footer-bottom">
             <p>&copy; 2023 Sweet Delights. All rights reserved.</p>
-            <nav class="footer-links">
+            <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
                 <a href="#">FAQ</a>
-            </nav>
+            </div>
         </div>
-        
-        <div class="decorative footer-cake"></div>
     </footer>
+
+    <script>
+        // JavaScript would go here for interactive elements
+        // This would be moved to a separate JS file in production
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navMenu = document.querySelector('.main-nav');
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Product slider functionality would be added here
+        });
+    </script>
 </body>
-</html>
+    </html>
