@@ -1,5 +1,3 @@
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -74,7 +72,6 @@
       animation: fadeIn 1s ease-in-out;
       max-height: 300px;
       object-fit: contain;
-      border: 8px solid white;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
@@ -162,6 +159,23 @@
       100% { transform: scale(1); filter: brightness(1); }
     }
     
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff69b4, 0 0 20px #ff69b4; }
+      100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff69b4; }
+    }
+    
+    @keyframes candleFlicker {
+      0%, 100% { opacity: 0.8; transform: scaleY(1); }
+      25% { opacity: 1; transform: scaleY(1.1); }
+      50% { opacity: 0.9; transform: scaleY(0.95); }
+      75% { opacity: 1; transform: scaleY(1.05); }
+    }
+    
     img.animate-blink:hover {
       animation: blink 1s infinite;
     }
@@ -171,7 +185,7 @@
     }
     
     img.animate-sparkle {
-      animation: sparkle 1.5s infinite;
+      animation: sparkle 1.5s infinite, float 3s ease-in-out infinite;
     }
     
     #secretMessage {
@@ -231,6 +245,57 @@
       right: 10px;
       border-bottom: 2px solid var(--secondary-color);
       border-right: 2px solid var(--secondary-color);
+    }
+    
+    /* Birthday effects */
+    .birthday-effect {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .candle {
+      position: absolute;
+      width: 10px;
+      height: 30px;
+      background: linear-gradient(to bottom, #ff9a00, #ff5e00);
+      border-radius: 5px 5px 0 0;
+      animation: candleFlicker 2s infinite alternate;
+    }
+    
+    .flame {
+      position: absolute;
+      width: 15px;
+      height: 25px;
+      background: linear-gradient(to top, #ff5e00, #ffdc00);
+      border-radius: 50% 50% 20% 20%;
+      filter: blur(5px);
+      animation: candleFlicker 1.5s infinite alternate;
+      top: -20px;
+      left: -2.5px;
+    }
+    
+    .balloon {
+      width: 40px;
+      height: 50px;
+      border-radius: 50%;
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .balloon-string {
+      position: absolute;
+      width: 2px;
+      height: 60px;
+      background-color: #ccc;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .glow-text {
+      animation: glow 1.5s ease-in-out infinite alternate;
     }
     
     /* Mobile specific styles */
@@ -396,6 +461,58 @@
       // Mute audio by default
       bgMusic.muted = true;
       
+      // Create birthday effects
+      function createBirthdayEffects() {
+        // Create floating candles
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            const candle = document.createElement('div');
+            candle.className = 'birthday-effect';
+            candle.style.left = `${Math.random() * 100}%`;
+            candle.style.top = `${Math.random() * 100}%`;
+            
+            const candleBody = document.createElement('div');
+            candleBody.className = 'candle';
+            
+            const flame = document.createElement('div');
+            flame.className = 'flame';
+            
+            candle.appendChild(candleBody);
+            candle.appendChild(flame);
+            document.body.appendChild(candle);
+            
+            // Remove after animation
+            setTimeout(() => {
+              candle.remove();
+            }, 10000);
+          }, i * 500);
+        }
+        
+        // Create floating balloons
+        const colors = ['#ff69b4', '#5e2a7e', '#d291ff', '#ff9a00', '#00c9ff'];
+        for (let i = 0; i < 10; i++) {
+          setTimeout(() => {
+            const balloon = document.createElement('div');
+            balloon.className = 'birthday-effect balloon';
+            balloon.style.left = `${Math.random() * 100}%`;
+            balloon.style.top = '100%';
+            balloon.style.backgroundColor = colors[i % colors.length];
+            balloon.style.animationDuration = `${5 + Math.random() * 5}s`;
+            
+            const string = document.createElement('div');
+            string.className = 'balloon-string';
+            
+            balloon.appendChild(string);
+            document.body.appendChild(balloon);
+            
+            // Remove after animation
+            setTimeout(() => {
+              balloon.remove();
+            }, 15000);
+          }, i * 300);
+        }
+      }
+      
       // Cake button functionality
       cakeBtn.addEventListener("click", function() {
         // Remove existing cake if any
@@ -413,34 +530,60 @@
         cakeImg.classList.add("cake-img", "animate-sparkle");
         document.querySelector(".container").insertBefore(cakeImg, document.querySelector("p"));
         
-        // Add birthday text
+        // Add birthday text with glow effect
         const text = document.createElement("div");
         text.textContent = "Selamat Ulang Tahun, Imooeett!";
-        text.className = "birthday-text";
+        text.className = "birthday-text glow-text";
         document.querySelector(".container").insertBefore(text, cakeImg.nextSibling);
         
         // Enhanced confetti effect
-        const duration = 3 * 1000;
+        const duration = 5 * 1000;
         const animationEnd = Date.now() + duration;
-        const colors = ['#ff69b4', '#ffccff', '#ffc0cb', '#ffffff'];
+        const colors = ['#ff69b4', '#ffccff', '#ffc0cb', '#ffffff', '#d291ff'];
         
         (function frame() {
           confetti({
-            particleCount: 5,
+            particleCount: 10,
             angle: 60,
-            spread: 55,
+            spread: 75,
             origin: { x: 0 },
-            colors
+            colors,
+            shapes: ['circle', 'star']
           });
           confetti({
-            particleCount: 5,
+            particleCount: 10,
             angle: 120,
-            spread: 55,
+            spread: 75,
             origin: { x: 1 },
-            colors
+            colors,
+            shapes: ['circle', 'star']
           });
+          
+          // Add some heart-shaped confetti
+          if (Date.now() % 3 === 0) {
+            confetti({
+              particleCount: 3,
+              angle: 90,
+              spread: 70,
+              origin: { y: 0.5 },
+              colors: ['#ff69b4'],
+              shapes: ['heart']
+            });
+          }
+          
           if (Date.now() < animationEnd) requestAnimationFrame(frame);
         })();
+        
+        // Create birthday effects
+        createBirthdayEffects();
+        
+        // Keep creating effects periodically
+        const effectInterval = setInterval(createBirthdayEffects, 3000);
+        
+        // Stop effects after 15 seconds
+        setTimeout(() => {
+          clearInterval(effectInterval);
+        }, 15000);
         
         // Play music when cake button is clicked
         bgMusic.muted = false;
