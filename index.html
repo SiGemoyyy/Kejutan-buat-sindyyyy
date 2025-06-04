@@ -1,632 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOKING - Simple and Tasty Recipes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            background-color: white;
-            z-index: 100;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #333;
-        }
-        
-        .logo span {
-            color: #4CAF50;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #4CAF50;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-text h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-text p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #3e8e41;
-            transform: translateY(-2px);
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Recipes Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #777;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .recipes {
-            padding: 80px 0;
-        }
-        
-        .recipe-cards {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .recipe-card {
-            flex: 1;
-            min-width: 300px;
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .recipe-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .recipe-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
-            border: 5px solid #f5f5f5;
-        }
-        
-        .recipe-card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        
-        .rating {
-            color: #FFC107;
-            margin-bottom: 10px;
-        }
-        
-        .recipe-card p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .recipe-meta {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .meta-item i {
-            color: #4CAF50;
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-        
-        .meta-item span {
-            font-size: 12px;
-            color: #777;
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-        
-        .service-item {
-            text-align: center;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 40px;
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
-        
-        .service-item h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .service-item p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        /* Story Section */
-        .story {
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .story-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .story-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .story-content p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #4CAF50;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: #4CAF50;
-        }
-        
-        .copyright {
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-            }
-            
-            .hero-text, .hero-image {
-                text-align: center;
-            }
-            
-            .hero-text p {
-                margin: 0 auto 30px;
-            }
-            
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-            }
-            
-            .logo {
-                margin-bottom: 20px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0 15px 10px;
-            }
-            
-            .hero-text h1 {
-                font-size: 36px;
-            }
-            
-            .recipe-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .recipe-card {
-                max-width: 350px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-text h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    <title>Sweet Delights - Toko Kue Pastel</title>
+    <meta name="description" content="Toko kue premium dengan desain pastel yang memikat. Temukan berbagai macam dessert lezat untuk setiap kesempatan.">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">COOK<span>ING</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Recipes</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h1 class="logo">Sweet Delights</h1>
+            
+            <div class="nav-icons">
+                <button class="account-icon" aria-label="Account">
+                    <img src="placeholder-account.svg" alt="Account">
+                </button>
+                <button class="cart-icon" aria-label="Shopping cart">
+                    <img src="placeholder-cart.svg" alt="Cart">
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>SIMPLE AND TASTY RECIPES</h1>
-                <p>Discover delicious recipes for every occasion. From quick weekday meals to impressive dinner party dishes, we've got you covered with our collection of tested recipes.</p>
-                <a href="#" class="btn">Get Started</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Healthy food in bowl">
+        <div class="hero-content">
+            <h2>Where Sweet Dreams Become Delicious Reality</h2>
+            <div class="search-container">
+                <input type="text" placeholder="Let's Find A Perfect Dessert For You..." aria-label="Search desserts">
+                <button class="search-button">Search</button>
             </div>
         </div>
+        <img src="placeholder-donut-hero.jpg" alt="Colorful donuts" class="hero-image">
+        <div class="decorative cloud-1"></div>
+        <div class="decorative cloud-2"></div>
+        <div class="decorative strawberry"></div>
     </section>
 
-    <!-- Recipes Section -->
-    <section class="recipes">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Recipes</h2>
-                <p>Explore our collection of delicious and easy-to-make recipes for every occasion</p>
-            </div>
-            
-            <div class="recipe-cards">
-                <!-- Recipe Card 1 -->
-                <div class="recipe-card">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sprout Salad" class="recipe-img">
-                    <h3>Sprout Salad with Soft Boiled Eggs</h3>
-                    <div class="rating">
-                        ★★★★☆
-                    </div>
-                    <p>A healthy and nutritious salad packed with protein and fresh vegetables.</p>
-                    <div class="recipe-meta">
-                        <div class="meta-item">
-                            <i>⏱️</i>
-                            <span>20 mins</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>👨‍🍳</i>
-                            <span>Easy</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>🍽️</i>
-                            <span>2 persons</span>
-                        </div>
-                    </div>
+    <main>
+        <!-- Kategori Produk -->
+        <section class="categories" id="categories">
+            <h2>Explore Our Goodies</h2>
+            <div class="category-slider">
+                <div class="category-item">
+                    <img src="placeholder-cake-icon.svg" alt="Cakes">
+                    <span>Cakes</span>
                 </div>
-                
-                <!-- Recipe Card 2 -->
-                <div class="recipe-card">
-                    <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chicken Curry" class="recipe-img">
-                    <h3>Chicken Curry</h3>
-                    <div class="rating">
-                        ★★★★★
-                    </div>
-                    <p>Aromatic and flavorful chicken curry with rich coconut milk and spices.</p>
-                    <div class="recipe-meta">
-                        <div class="meta-item">
-                            <i>⏱️</i>
-                            <span>45 mins</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>👨‍🍳</i>
-                            <span>Medium</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>🍽️</i>
-                            <span>4 persons</span>
-                        </div>
-                    </div>
+                <div class="category-item">
+                    <img src="placeholder-pastry-icon.svg" alt="Pastries">
+                    <span>Pastries</span>
                 </div>
-                
-                <!-- Recipe Card 3 -->
-                <div class="recipe-card">
-                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vegetable Salad" class="recipe-img">
-                    <h3>Vegetable Salad</h3>
-                    <div class="rating">
-                        ★★★★☆
-                    </div>
-                    <p>Fresh and crunchy vegetable salad with a light lemon dressing.</p>
-                    <div class="recipe-meta">
-                        <div class="meta-item">
-                            <i>⏱️</i>
-                            <span>15 mins</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>👨‍🍳</i>
-                            <span>Easy</span>
-                        </div>
-                        <div class="meta-item">
-                            <i>🍽️</i>
-                            <span>2 persons</span>
-                        </div>
-                    </div>
+                <div class="category-item">
+                    <img src="placeholder-bread-icon.svg" alt="Breads">
+                    <span>Breads</span>
+                </div>
+                <div class="category-item">
+                    <img src="placeholder-cupcake-icon.svg" alt="Cupcakes">
+                    <span>Cupcakes</span>
+                </div>
+                <div class="category-item">
+                    <img src="placeholder-donut-icon.svg" alt="Donuts">
+                    <span>Donuts</span>
+                </div>
+                <div class="category-item">
+                    <img src="placeholder-macaron-icon.svg" alt="Macarons">
+                    <span>Macarons</span>
+                </div>
+                <div class="category-item">
+                    <img src="placeholder-croissant-icon.svg" alt="Croissants">
+                    <span>Croissants</span>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="decorative leaf-1"></div>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Awesome Services</h2>
-                <p>We provide the best services to make your cooking experience enjoyable and successful</p>
-            </div>
-            
-            <div class="service-grid">
-                <!-- Service 1 -->
-                <div class="service-item">
-                    <div class="service-icon">🍲</div>
-                    <h3>Quality Food</h3>
-                    <p>We provide only tested recipes with high-quality ingredients for best results.</p>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-item">
-                    <div class="service-icon">🥬</div>
-                    <h3>Fresh Ingredients</h3>
-                    <p>All our recipes use fresh, seasonal ingredients for maximum flavor.</p>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="service-item">
-                    <div class="service-icon">🔥</div>
-                    <h3>Serve Hot</h3>
-                    <p>Detailed instructions on how to serve dishes at their perfect temperature.</p>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="service-item">
-                    <div class="service-icon">👨‍🍳</div>
-                    <h3>Cook Like a Chef</h3>
-                    <p>Professional tips and techniques to elevate your cooking skills.</p>
-                </div>
-                
-                <!-- Service 5 -->
-                <div class="service-item">
-                    <div class="service-icon">📝</div>
-                    <h3>Easy Recipes</h3>
-                    <p>Step-by-step instructions that anyone can follow, even beginners.</p>
-                </div>
-                
-                <!-- Service 6 -->
-                <div class="service-item">
-                    <div class="service-icon">⏱️</div>
-                    <h3>Quick Meals</h3>
-                    <p>Collection of recipes that can be prepared in 30 minutes or less.</p>
+        <!-- Produk Unggulan -->
+        <section class="featured-product">
+            <h2>Our Star Treat</h2>
+            <div class="product-showcase">
+                <img src="placeholder-blueberry-cake.jpg" alt="Blueberry Bliss Cake" class="product-image">
+                <div class="product-details">
+                    <h3>Blueberry Bliss Cake</h3>
+                    <p class="product-description">Lembutnya sponge cake vanilla dipadukan dengan blueberry segar dan buttercream yang ringan. Perpaduan sempurna antara manis dan asam yang akan memanjakan lidah Anda.</p>
+                    <p class="product-price">Rp 250.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="decorative berry"></div>
+        </section>
 
-    <!-- Story Section -->
-    <section class="story">
-        <div class="container">
-            <div class="story-content">
-                <h2>Discover Our Story</h2>
-                <p>Founded in 2015, COOKING started as a small blog sharing family recipes. What began as a passion project quickly grew into a community of food lovers from around the world. Our mission is to make cooking accessible to everyone, regardless of skill level.</p>
-                <p>We test each recipe multiple times to ensure it works in real home kitchens with ordinary equipment. Our team of chefs and food writers are dedicated to bringing you reliable, delicious recipes that you'll want to make again and again.</p>
-                <a href="#" class="btn">Learn More</a>
+        <!-- Produk Pilihan -->
+        <section class="featured-products">
+            <h2>Our Featured Products</h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <img src="placeholder-chocolate-croissant.jpg" alt="Chocolate Croissant">
+                    <h3>Chocolate Croissant</h3>
+                    <p class="price">Rp 35.000</p>
+                    <button class="quick-add">+</button>
+                </article>
+                
+                <article class="product-card">
+                    <img src="placeholder-strawberry-cupcake.jpg" alt="Strawberry Cupcake">
+                    <h3>Strawberry Cupcake</h3>
+                    <p class="price">Rp 45.000</p>
+                    <button class="quick-add">+</button>
+                </article>
+                
+                <article class="product-card">
+                    <img src="placeholder-macarons-box.jpg" alt="Macarons Box">
+                    <h3>Macarons Box (6 pcs)</h3>
+                    <p class="price">Rp 120.000</p>
+                    <button class="quick-add">+</button>
+                </article>
             </div>
-        </div>
-    </section>
+            <div class="decorative cloud-3"></div>
+        </section>
+
+        <!-- Ulasan Pelanggan -->
+        <section class="testimonials">
+            <h2>Sweet Reviews</h2>
+            <div class="reviews-container">
+                <div class="review">
+                    <img src="placeholder-avatar-1.jpg" alt="Customer avatar" class="avatar">
+                    <blockquote>
+                        <p>"The Blueberry Bliss Cake was the highlight of my birthday party! Everyone kept asking where I got it."</p>
+                        <cite>- Sarah T.</cite>
+                    </blockquote>
+                </div>
+                
+                <div class="review">
+                    <img src="placeholder-avatar-2.jpg" alt="Customer avatar" class="avatar">
+                    <blockquote>
+                        <p>"Best croissants in town! I order them every weekend for my family breakfast."</p>
+                        <cite>- Michael L.</cite>
+                    </blockquote>
+                </div>
+                
+                <div class="review">
+                    <img src="placeholder-avatar-3.jpg" alt="Customer avatar" class="avatar">
+                    <blockquote>
+                        <p>"Their macarons are to die for! The perfect balance of crispy and chewy with amazing flavors."</p>
+                        <cite>- Dian P.</cite>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="decorative sprinkles"></div>
+        </section>
+
+        <!-- Artikel Terbaru -->
+        <section class="blog-posts">
+            <h2>Our New Articles</h2>
+            <div class="articles-grid">
+                <article class="blog-card">
+                    <img src="placeholder-blog-1.jpg" alt="Blog post image">
+                    <time datetime="2023-05-15">May 15, 2023</time>
+                    <h3>5 Tips for Perfect Homemade Cupcakes</h3>
+                    <button class="read-more">Learn More</button>
+                </article>
+                
+                <article class="blog-card">
+                    <img src="placeholder-blog-2.jpg" alt="Blog post image">
+                    <time datetime="2023-05-08">May 8, 2023</time>
+                    <h3>The Art of French Pastry: A Beginner's Guide</h3>
+                    <button class="read-more">Learn More</button>
+                </article>
+                
+                <article class="blog-card">
+                    <img src="placeholder-blog-3.jpg" alt="Blog post image">
+                    <time datetime="2023-05-01">May 1, 2023</time>
+                    <h3>Seasonal Fruits for Summer Desserts</h3>
+                    <button class="read-more">Learn More</button>
+                </article>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>COOKING</h3>
-                    <p>Simple and tasty recipes for everyone. Making cooking enjoyable and accessible.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Recipes</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul>
-                        <li><a href="#">Breakfast</a></li>
-                        <li><a href="#">Lunch</a></li>
-                        <li><a href="#">Dinner</a></li>
-                        <li><a href="#">Desserts</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><a href="#">hello@cooking.com</a></li>
-                        <li><a href="#">+1 234 567 890</a></li>
-                        <li><a href="#">123 Food St, Culinary City</a></li>
-                    </ul>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Sweet Delights</h3>
+                <address>
+                    Jl. Pastel Indah No. 123<br>
+                    Jakarta Selatan, 12345<br>
+                    Indonesia
+                </address>
+                <p>Email: hello@sweetdelights.com</p>
+                <p>Phone: +62 123 4567 890</p>
+                
+                <div class="social-media">
+                    <a href="#" aria-label="Instagram"><img src="placeholder-instagram.svg" alt="Instagram"></a>
+                    <a href="#" aria-label="Facebook"><img src="placeholder-facebook.svg" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="placeholder-twitter.svg" alt="Twitter"></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 COOKING. All rights reserved.</p>
+            
+            <div class="newsletter">
+                <h3>Sweet Newsletter</h3>
+                <p>Subscribe for exclusive offers and dessert inspiration!</p>
+                <form>
+                    <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?placeholder" title="Sweet Delights Location" allowfullscreen></iframe>
             </div>
         </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Sweet Delights. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">FAQ</a>
+            </nav>
+        </div>
+        
+        <div class="decorative footer-cake"></div>
     </footer>
 </body>
-    </html>
+</html>
