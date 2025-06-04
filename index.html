@@ -5,28 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kok Bisa Kamu Selucu Itu?</title>
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     body {
-      background: linear-gradient(to bottom right, #ffe6f0, #f3e8ff);
-      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(to bottom right, #FFEDFA, #FFB8E0);
+      font-family: "Nunito", sans-serif;
       text-align: center;
-      color: #5e2a7e;
+      color: #BE5985;
       padding: 20px;
+      line-height: 1.6;
     }
     .container {
       max-width: 700px;
       width: 95%;
       margin: auto;
       background: white;
-      padding: 20px;
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(190, 89, 133, 0.15);
+      border: 2px solid #FFEDFA;
+    }
+    h1 {
+      font-family: "Pacifico", cursive;
+      color: #EC7FA9;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 0px rgba(255, 184, 224, 0.3);
+    }
+    .quote {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      color: #BE5985;
+      font-size: 1.2rem;
     }
     img, audio, video {
       max-width: 100%;
       height: auto;
       border-radius: 16px;
+      border: 3px solid #FFB8E0;
     }
     .cake-img {
       animation: fadeIn 1s ease-in-out;
@@ -39,32 +58,37 @@
       margin-top: 20px;
       line-height: 1.6;
       font-size: 1.1rem;
+      color: #5e2a7e;
     }
     button {
       margin: 10px 5px;
-      padding: 10px 20px;
-      background-color: #d291ff;
+      padding: 12px 24px;
+      background-color: #EC7FA9;
       color: white;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
       font-size: 1rem;
       border: none;
-      border-radius: 12px;
+      border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(236, 127, 169, 0.3);
     }
     button:hover {
-      background-color: #a76cd1;
+      background-color: #BE5985;
       transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(190, 89, 133, 0.3);
     }
     button:active {
       transform: translateY(1px);
     }
     .birthday-text {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #ff69b4;
-      margin-top: 20px;
+      font-family: "Pacifico", cursive;
+      font-size: 2.2rem;
+      color: #EC7FA9;
+      margin: 20px 0;
       animation: popIn 1s ease-out;
+      text-shadow: 2px 2px 0px rgba(255, 184, 224, 0.3);
     }
     @keyframes popIn {
       0% { transform: scale(0); opacity: 0; }
@@ -101,31 +125,36 @@
       animation: sparkle 1.5s infinite;
     }
     .secret-message {
-      margin-top: 20px;
+      margin: 20px 0;
       font-weight: bold;
       font-size: 1.2rem;
       min-height: 4em;
       animation: floatUp 0.5s ease-out;
-      background: #fff4ff;
+      background: #FFEDFA;
       padding: 15px;
       border-radius: 12px;
-      border: 2px dashed #d291ff;
+      border: 2px dashed #EC7FA9;
+      font-family: "Quicksand", sans-serif;
     }
     .bubble-container {
       display: flex;
       justify-content: center;
-      margin: 20px 0;
+      margin: 30px 0;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
     }
     .chat-bubble {
-      background: #fff4ff;
+      background: #FFEDFA;
       padding: 12px 18px;
       border-radius: 20px;
       max-width: 200px;
       position: relative;
       animation: floatUp 0.5s ease-out;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(236, 127, 169, 0.2);
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      color: #BE5985;
+      border: 1px solid #FFB8E0;
     }
     .chat-bubble::after {
       content: '';
@@ -134,14 +163,23 @@
       left: 20px;
       border-width: 10px 10px 0;
       border-style: solid;
-      border-color: #fff4ff transparent;
+      border-color: #FFEDFA transparent;
     }
     .music-controls {
-      margin: 15px 0;
+      margin: 20px 0;
     }
     .disabled {
       opacity: 0.6;
       pointer-events: none;
+      background-color: #FFB8E0 !important;
+    }
+    strong {
+      color: #BE5985;
+      font-weight: 700;
+    }
+    em {
+      color: #EC7FA9;
+      font-style: italic;
     }
   </style>
 </head>
@@ -157,7 +195,7 @@
     
     <img id="mainImage" src="file_0000000058e062308ed04b1cc3b45d89.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" class="animate-blink animate-swing" />
     
-    <p>💌 Cerita kocak Sindy Imooeett:</p>
+    <p class="quote">💌 Cerita kocak Sindy Imooeett:</p>
     <p>
       <strong>
         "Roti Manis, Gosong, dan Si Gemoy yang Gagal Bareng Tapi Bahagia"<br><br>
@@ -308,7 +346,7 @@
       // Confetti efek tambahan
       const duration = 3 * 1000;
       const animationEnd = Date.now() + duration;
-      const colors = ['#ff69b4', '#ffccff', '#ffc0cb', '#ffffff'];
+      const colors = ['#EC7FA9', '#FFB8E0', '#FFEDFA', '#ffffff'];
 
       (function frame() {
         confetti({
@@ -379,4 +417,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
