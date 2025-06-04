@@ -1,897 +1,485 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untuk Si Imut yang Mengisi Hariku</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&family=Quicksand:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <style>
-    :root {
-      --pink-light: #FFEDFA;
-      --pink-medium: #FFB8E0;
-      --pink-dark: #EC7FA9;
-      --purple-dark: #5e2a7e;
-      --text-color: #BE5985;
-    }
-    
-    body {
-      background: linear-gradient(135deg, var(--pink-light), #FFD6ED);
-      font-family: "Nunito", sans-serif;
-      text-align: center;
-      color: var(--text-color);
-      padding: 20px;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .container {
-      max-width: 800px;
-      width: 95%;
-      margin: 2rem auto;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2.5rem;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(190, 89, 133, 0.2);
-      border: 3px solid var(--pink-medium);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
-    }
-    
-    .container::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-      pointer-events: none;
-    }
-    
-    h1 {
-      font-family: "Dancing Script", cursive;
-      color: var(--pink-dark);
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      text-shadow: 3px 3px 0px rgba(255, 184, 224, 0.3);
-      position: relative;
-      display: inline-block;
-    }
-    
-    h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--pink-dark), transparent);
-    }
-    
-    .quote {
-      font-family: "Quicksand", sans-serif;
-      font-weight: 600;
-      color: var(--text-color);
-      font-size: 1.3rem;
-      margin: 1.5rem 0;
-      position: relative;
-    }
-    
-    .quote::before, .quote::after {
-      content: '"';
-      font-size: 1.5em;
-      color: var(--pink-dark);
-      position: relative;
-      top: 0.3em;
-    }
-    
-    img, audio, video {
-      max-width: 100%;
-      height: auto;
-      border-radius: 18px;
-      border: 4px solid var(--pink-medium);
-      box-shadow: 0 8px 20px rgba(190, 89, 133, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 25px rgba(190, 89, 133, 0.3);
-    }
-    
-    .cake-img {
-      animation: float 4s ease-in-out infinite;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    
-    p {
-      margin: 1.5rem 0;
-      line-height: 1.8;
-      font-size: 1.15rem;
-      color: var(--purple-dark);
-      text-align: left;
-    }
-    
-    button {
-      margin: 0.8rem;
-      padding: 0.8rem 1.8rem;
-      background: linear-gradient(135deg, var(--pink-dark), var(--text-color));
-      color: white;
-      font-family: "Quicksand", sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(236, 127, 169, 0.4);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(190, 89, 133, 0.5);
-    }
-    
-    button:hover::before {
-      left: 100%;
-    }
-    
-    button:active {
-      transform: translateY(1px);
-    }
-    
-    .birthday-text {
-      font-family: "Pacifico", cursive;
-      font-size: 2.5rem;
-      color: var(--pink-dark);
-      margin: 2rem 0;
-      background: linear-gradient(135deg, var(--pink-dark), #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(255, 184, 224, 0.3);
-      position: relative;
-    }
-    
-    .birthday-text::after {
-      content: '🎉';
-      position: absolute;
-      right: -40px;
-      top: -20px;
-      font-size: 1.5rem;
-      animation: spin 2s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    .secret-message {
-      margin: 2rem 0;
-      font-weight: bold;
-      font-size: 1.3rem;
-      min-height: 5em;
-      background: rgba(255, 237, 250, 0.7);
-      padding: 1.5rem;
-      border-radius: 15px;
-      border: 2px dashed var(--pink-dark);
-      font-family: "Quicksand", sans-serif;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .secret-message::before {
-      content: '💌';
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      font-size: 1.5rem;
-    }
-    
-    .bubble-container {
-      display: flex;
-      justify-content: center;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .chat-bubble {
-      background: var(--pink-light);
-      padding: 1rem 1.5rem;
-      border-radius: 25px;
-      max-width: 250px;
-      position: relative;
-      box-shadow: 0 5px 15px rgba(236, 127, 169, 0.2);
-      font-family: "Quicksand", sans-serif;
-      font-weight: 600;
-      color: var(--text-color);
-      border: 2px solid var(--pink-medium);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: floatUp 0.5s ease-out forwards;
-      animation-delay: calc(var(--order) * 0.2s);
-    }
-    
-    .chat-bubble:hover {
-      transform: translateY(-5px) !important;
-      box-shadow: 0 8px 20px rgba(236, 127, 169, 0.3);
-    }
-    
-    .chat-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 30px;
-      border-width: 12px 12px 0;
-      border-style: solid;
-      border-color: var(--pink-light) transparent;
-    }
-    
-    @keyframes floatUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    
-    .music-controls {
-      margin: 1.5rem 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .disabled {
-      opacity: 0.7;
-      pointer-events: none;
-      background: var(--pink-medium) !important;
-    }
-    
-    strong {
-      color: var(--text-color);
-      font-weight: 700;
-    }
-    
-    em {
-      color: var(--pink-dark);
-      font-style: italic;
-      font-weight: 600;
-    }
-    
-    .heart {
-      position: absolute;
-      pointer-events: none;
-      animation: float-heart 4s linear forwards;
-      opacity: 0;
-    }
-    
-    @keyframes float-heart {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
-    
-    .floating-hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    
-    .polaroid {
-      background: white;
-      padding: 1rem 1rem 3rem;
-      border-radius: 5px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transform: rotate(-5deg);
-      transition: all 0.3s ease;
-      display: inline-block;
-      margin: 2rem;
-      position: relative;
-    }
-    
-    .polaroid:hover {
-      transform: rotate(0deg) scale(1.05);
-    }
-    
-    .polaroid::after {
-      content: attr(data-caption);
-      position: absolute;
-      bottom: 1rem;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-family: "Pacifico", cursive;
-      color: var(--text-color);
-    }
-    
-    .memory-book {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
-      padding: 2rem;
-      margin: 2rem 0;
-      border: 2px solid var(--pink-medium);
-    }
-    
-    .memory-page {
-      display: none;
-      animation: fadeIn 0.5s ease-out;
-    }
-    
-    .memory-page.active {
-      display: block;
-    }
-    
-    .page-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .page-indicator {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--pink-medium);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .dot.active {
-      background: var(--pink-dark);
-      transform: scale(1.2);
-    }
-    
-    .love-meter {
-      width: 80%;
-      height: 20px;
-      background: var(--pink-light);
-      border-radius: 10px;
-      margin: 1rem auto;
-      overflow: hidden;
-      border: 2px solid var(--pink-medium);
-    }
-    
-    .love-progress {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--pink-medium), var(--pink-dark));
-      border-radius: 8px;
-      transition: width 1s ease;
-    }
-    
-    .love-text {
-      font-family: "Pacifico", cursive;
-      font-size: 1.5rem;
-      margin-top: 0.5rem;
-      color: var(--pink-dark);
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding: 1.5rem;
-      }
-      
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      .birthday-text {
-        font-size: 2rem;
-      }
-      
-      .quote {
-        font-size: 1.1rem;
-      }
-      
-      p {
-        font-size: 1rem;
-      }
-      
-      button {
-        padding: 0.7rem 1.5rem;
-        margin: 0.5rem;
-      }
-      
-      .chat-bubble {
-        max-width: 200px;
-        padding: 0.8rem 1.2rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .birthday-text {
-        font-size: 1.5rem;
-      }
-      
-      .secret-message {
-        font-size: 1.1rem;
-        padding: 1rem;
-      }
-      
-      .polaroid {
-        margin: 1rem 0;
-        transform: rotate(0deg);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights - Elegant Cake Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --pink-pastel: #ffd6e0;
+            --pink-dark: #ff85a2;
+            --cream: #fff9f0;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--pink-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: var(--text-dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 15px auto 0;
+        }
+        
+        /* Header / Hero Section */
+        header {
+            background-color: var(--pink-pastel);
+            padding: 100px 0 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background-image: url('#'); /* Placeholder for floral pattern */
+            background-size: contain;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cake-images {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .cake-images img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 15px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Featured Products Section */
+        .featured-products {
+            background-color: var(--white);
+            padding: 100px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .product-card p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        /* Holiday Collection Section */
+        .holiday-collection {
+            background-color: var(--pink-pastel);
+            text-align: center;
+            position: relative;
+            padding: 100px 0;
+        }
+        
+        .holiday-banner {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .holiday-banner:before {
+            content: '20% OFF';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            transform: rotate(15deg);
+        }
+        
+        .holiday-banner h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .holiday-banner p {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        
+        .holiday-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .holiday-images img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--white);
+        }
+        
+        .limited-time {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: bold;
+            margin-top: 20px;
+            display: block;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .feature-item {
+            padding: 30px;
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item p {
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--pink-pastel);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 40px;
+        }
+        
+        .social-links p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            color: var(--pink-dark);
+            border-radius: 50%;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            
+            .cake-images {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cake-images img {
+                margin: 10px 0;
+            }
+            
+            .holiday-images {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="floating-hearts" id="heartsContainer"></div>
-  
-  <div class="container">
-    <h1>Untuk Si Imut yang Mengisi Hariku</h1>
-    
-    <div class="music-controls">
-      <button id="musicBtn" aria-label="Putar atau hentikan musik latar">
-        <span id="musicIcon">🎵</span> Putar Lagu Romantis
-      </button>
-      <button id="heartRainBtn" aria-label="Turunkan hujan hati">
-        💖 Hujan Cinta
-      </button>
-    </div>
-    
-    <div class="polaroid" data-caption="Sindy & Roti Manis">
-      <img id="mainImage" src="file_0000000058e062308ed04b1cc3b45d89.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" />
-    </div>
-    
-    <div class="quote">"Dalam setiap tawa dan air matamu, aku menemukan alasan untuk lebih mencintaimu setiap hari"</div>
-    
-    <div class="memory-book">
-      <div class="memory-page active" id="page1">
-        <p>
-          <strong>
-            "Roti, Gosong, dan Kisah Cinta Kita"<br><br>
-            
-            Untuk Sindy Imooeett, gadis kecil yang membuat setiap detik bersamamu terasa seperti adegan terindah dalam film romantis...<br><br>
-            
-            Hari itu seharusnya hanya tentang roti. Tentang mengulen adonan, menunggu fermentasi, dan memanggang. Tapi takdir membawamu ke sampingku - dengan rambut berantakan yang tetap sempurna di balik hijabmu, dengan ekspresi yang bercampur antara tekad dan keraguan.<br><br>
-            
-            <em>"Gemoy... rotiku gagal... kayaknya aku juga gagal jadi kekasih yang baik..."</em> bisikmu sambil menatap roti yang pinggirnya gosong.<br><br>
-            
-            Aku tak bisa menahan senyum. Karena rotiku sama persis - gosong di pinggir, belum matang di tengah. Dua roti bersaudara, dua hati yang mulai berdetak selaras.<br><br>
-            
-            Lalu sang instruktur datang dengan berita menegangkan. Roti yang tidak sempurna bisa berarti tidak lulus. Aku melihat matamu berkaca-kaca, tanganmu gemetar memegang roti itu. Dunia seakan berhenti berputar.<br><br>
-            
-            Tapi kemudian... kabar gembira! Semangatmu yang luar biasa membuatmu tetap lulus! Dan air matamu pun mengalir deras, seperti adegan klimaks dalam drama Korea favoritmu.<br><br>
-            
-            Saat kumerangkulmu yang sedang sesenggukan, aku tahu inilah momen yang akan selalu kuingat. Bukan tentang roti yang gosong, tapi tentang bagaimana kegagalan kecil justru mempertemukan dua hati.<br><br>
-            
-            Selamat ulang tahun, sayangku. Terima kasih sudah menjadi roti manis dalam hidupku - kadang gosong di pinggir, tapi selalu sempurna di mataku.<br><br>
-            
-            Dengan cinta,<br>
-            Gemoy yang selalu gagal move on darimu
-          </strong>
-        </p>
-      </div>
-      
-      <div class="memory-page" id="page2">
-        <p>
-          <strong>
-            "10 Alasan Kenapa Aku Jatuh Cinta Padamu"<br><br>
-            
-            1. Cara matamu berbinar saat bicara tentang hal yang kamu sukai<br>
-            2. Tawamu yang bisa menghangatkan hari terdingin sekalipun<br>
-            3. Dramamu yang selalu membuat hidup lebih berwarna<br>
-            4. Ketulusanmu dalam mencintai dan peduli pada orang lain<br>
-            5. Cara kamu memelukku erat saat merasa takut atau sedih<br>
-            6. Semangatmu yang tak pernah padam meski seringkali gugup<br>
-            7. Kebiasaanmu mengirim pesan random di tengah malam<br>
-            8. Cara kamu memperhatikan detail kecil tentang diriku<br>
-            9. Keteguhanmu dalam mempertahankan hubungan kita<br>
-            10. Karena kamu adalah kamu - tak ada yang bisa menggantikanmu<br><br>
-            
-            Setiap hari, aku menemukan alasan baru untuk lebih mencintaimu...
-          </strong>
-        </p>
-      </div>
-      
-      <div class="memory-page" id="page3">
-        <p>
-          <strong>
-            "Janji-Janjiku Untukmu"<br><br>
-            
-            Aku berjanji akan:<br><br>
-            
-            - Selalu mendengarkan semua ceritamu, bahkan yang paling sepele sekalipun<br>
-            - Menjadi pelindung saat kamu merasa takut atau tidak aman<br>
-            - Menerima semua dramamu karena itu yang membuatmu unik<br>
-            - Memasak untukmu saat kamu malas, meski hasilnya mungkin tidak sebagus rotimu<br>
-            - Menjadi orang pertama yang merayakan kesuksesanmu<br>
-            - Memelukmu erat saat dunia terasa berat<br>
-            - Mengingatkanmu betapa berharganya dirimu saat kamu meragukan diri sendiri<br>
-            - Selalu berusaha memahami perasaanmu, bahkan saat kamu sendiri bingung<br>
-            - Menjadikan setiap hari bersamamu sebagai petualangan baru<br>
-            - Mencintaimu lebih dari hari sebelumnya, setiap harinya<br><br>
-            
-            Karena kamu layak mendapatkan yang terbaik, sayangku.
-          </strong>
-        </p>
-      </div>
-      
-      <div class="page-controls">
-        <button id="prevPage">← Sebelumnya</button>
-        <button id="nextPage">Selanjutnya →</button>
-      </div>
-      
-      <div class="page-indicator">
-        <div class="dot active" data-page="1"></div>
-        <div class="dot" data-page="2"></div>
-        <div class="dot" data-page="3"></div>
-      </div>
-    </div>
+    <!-- Header / Hero Section -->
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Delight in Every Bite!</h1>
+                <p>Handcrafted artisanal cakes and pastries made with love and the finest ingredients</p>
+                <a href="#" class="btn">Order Now</a>
+                
+                <div class="cake-images">
+                    <img src="#" alt="Elegant Birthday Cake">
+                    <img src="#" alt="Beautiful Cupcakes">
+                    <img src="#" alt="Wedding Cake">
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div class="bubble-container">
-      <div class="chat-bubble" style="--order:1">Aku bersyukur setiap hari memilikimu</div>
-      <div class="chat-bubble" style="--order:2">Kamu membuat hidupku lebih berwarna 💖</div>
-      <div class="chat-bubble" style="--order:3">Aku sayang kamu lebih dari apapun</div>
-    </div>
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Our Signature Creations</h2>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="#" alt="Custom Cakes">
+                    <h3>Custom Cakes</h3>
+                    <p>Bespoke celebration cakes designed to your exact specifications, perfect for weddings, birthdays, and special occasions.</p>
+                    <a href="#" class="btn">Order Today</a>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="#" alt="Macarons">
+                    <h3>Macarons</h3>
+                    <p>Delicate French macarons in a rainbow of flavors, with crisp shells and luscious fillings that melt in your mouth.</p>
+                    <a href="#" class="btn">See Our Cakes</a>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="#" alt="Cupcake Collections">
+                    <h3>Cupcake Collections</h3>
+                    <p>Artfully decorated cupcakes in seasonal flavors, available by the dozen for your next event or special treat.</p>
+                    <a href="#" class="btn">Order Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="love-meter">
-      <div class="love-progress" id="loveProgress"></div>
-    </div>
-    <div class="love-text" id="loveText">Cintaku padamu: 0%</div>
+    <!-- Holiday Collection Section -->
+    <section class="holiday-collection">
+        <div class="container">
+            <div class="holiday-banner">
+                <h2>Holiday Collection</h2>
+                <p>Celebrate the season with our special holiday treats, featuring festive flavors and decorations that will make your celebrations even sweeter.</p>
+                <a href="#" class="btn">Order Today</a>
+                <span class="limited-time">Limited time only</span>
+            </div>
+            
+            <div class="holiday-images">
+                <img src="#" alt="Festive Cupcakes">
+                <img src="#" alt="Holiday Macarons">
+            </div>
+        </div>
+    </section>
 
-    <button id="cakeBtn" aria-label="Tampilkan kue ulang tahun spesial">🎂 Kue Spesial Untukmu</button>
-    <button id="secretBtn" aria-label="Buka pesan rahasia lucu">💌 Pesan Rahasia</button>
-    <button id="hugBtn" aria-label="Kirim peluk virtual">🤗 Kirim Peluk Hangat</button>
-    <button id="promiseBtn" aria-label="Buat janji manis">💍 Janji Abadi</button>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Premium Ingredients</h3>
+                    <p>We use only the finest quality ingredients sourced from trusted suppliers to ensure exceptional taste and quality.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Freshly made and carefully packaged for delivery to your door within 24 hours of ordering in most areas.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Made With Love</h3>
+                    <p>Each creation is handcrafted with passion and attention to detail by our talented pastry chefs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div id="secretMessage" class="secret-message"></div>
-  </div>
-
-  <audio id="bg-music" loop>
-    <source src="happy-birthday-my-kitty-120918.mp3" type="audio/mpeg" />
-    Browser kamu belum bisa memutar musik romantis ini.
-  </audio>
-
-  <audio id="click-sound">
-    <source src="click-funny.mp3" type="audio/mpeg" />
-  </audio>
-
-  <audio id="heart-sound">
-    <source src="heartbeat.mp3" type="audio/mpeg" />
-  </audio>
-
-  <script>
-    // Elements
-    const bgMusic = document.getElementById("bg-music");
-    const clickSound = document.getElementById("click-sound");
-    const heartSound = document.getElementById("heart-sound");
-    const musicBtn = document.getElementById("musicBtn");
-    const musicIcon = document.getElementById("musicIcon");
-    const cakeBtn = document.getElementById("cakeBtn");
-    const secretBtn = document.getElementById("secretBtn");
-    const hugBtn = document.getElementById("hugBtn");
-    const promiseBtn = document.getElementById("promiseBtn");
-    const heartRainBtn = document.getElementById("heartRainBtn");
-    const loveProgress = document.getElementById("loveProgress");
-    const loveText = document.getElementById("loveText");
-    const heartsContainer = document.getElementById("heartsContainer");
-    const prevPageBtn = document.getElementById("prevPage");
-    const nextPageBtn = document.getElementById("nextPage");
-    const dots = document.querySelectorAll('.dot');
-    
-    // State
-    let cakeShown = false;
-    let loveLevel = 0;
-    let currentPage = 1;
-    const totalPages = 3;
-    
-    // Music control
-    musicBtn.addEventListener("click", function() {
-      playSound();
-      if (bgMusic.paused) {
-        bgMusic.muted = false;
-        bgMusic.play().catch(e => console.log("Music play prevented:", e));
-        musicBtn.innerHTML = '<span id="musicIcon">🎶</span> Hentikan Musik';
-      } else {
-        bgMusic.pause();
-        musicBtn.innerHTML = '<span id="musicIcon">🎵</span> Putar Lagu Romantis';
-      }
-    });
-    
-    // Heart rain
-    heartRainBtn.addEventListener("click", function() {
-      playSound();
-      heartSound.play().catch(e => console.log("Heart sound prevented:", e));
-      createHearts(50);
-      
-      // Animate love meter
-      if (loveLevel < 100) {
-        loveLevel += 10;
-        if (loveLevel > 100) loveLevel = 100;
-        updateLoveMeter();
-      }
-    });
-    
-    function createHearts(count) {
-      for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-          const heart = document.createElement('div');
-          heart.innerHTML = '❤️';
-          heart.classList.add('heart');
-          heart.style.left = Math.random() * 100 + 'vw';
-          heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-          heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-          heartsContainer.appendChild(heart);
-          
-          setTimeout(() => {
-            heart.remove();
-          }, 5000);
-        }, i * 100);
-      }
-    }
-    
-    // Love meter
-    function updateLoveMeter() {
-      loveProgress.style.width = loveLevel + '%';
-      loveText.textContent = getLoveText(loveLevel);
-      
-      if (loveLevel >= 100) {
-        loveText.innerHTML += ' 🌟';
-        createHearts(20);
-        confetti({
-          particleCount: 150,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#ff0000', '#ff69b4', '#ff1493']
-        });
-      }
-    }
-    
-    function getLoveText(level) {
-      if (level < 20) return `Cintaku padamu: ${level}%`;
-      if (level < 40) return `Mulai tumbuh: ${level}%`;
-      if (level < 60) return `Semakin dalam: ${level}%`;
-      if (level < 80) return `Sungguh berarti: ${level}%`;
-      if (level < 100) return `Hampir sempurna: ${level}%`;
-      return `Cintaku tak terbatas! 100%`;
-    }
-    
-    // Cake button
-    cakeBtn.addEventListener("click", function() {
-      playSound();
-      
-      if (cakeShown) return;
-      cakeShown = true;
-      cakeBtn.classList.add("disabled");
-      cakeBtn.innerHTML = "🎂 Kue Sudah Muncul!";
-      
-      const cakeImg = document.createElement("img");
-      cakeImg.src = "20250526_155431_0000.png";
-      cakeImg.alt = "Kue Cantik Ulang Tahun";
-      cakeImg.classList.add("cake-img");
-      
-      const existingCake = document.querySelector(".cake-img");
-      if (existingCake) existingCake.remove();
-      
-      const polaroid = document.querySelector(".polaroid");
-      polaroid.parentNode.insertBefore(cakeImg, polaroid.nextSibling);
-      
-      const text = document.createElement("div");
-      text.textContent = "Selamat Ulang Tahun, Sayangku!";
-      text.className = "birthday-text";
-      cakeImg.parentNode.insertBefore(text, cakeImg.nextSibling);
-      
-      // Special effects
-      createHearts(30);
-      confetti({
-        particleCount: 200,
-        spread: 90,
-        origin: { y: 0.6 }
-      });
-      
-      bgMusic.muted = false;
-      bgMusic.play().catch(e => console.log("Music play prevented:", e));
-    });
-    
-    // Secret messages
-    const messages = [
-      "Pernahkah kamu sadar bahwa senyummu adalah alarm terindah yang membangunkanku dari mimpi buruk?",
-      "Kalau kamu jadi bintang, aku akan jadi astronot yang rela menghabiskan seumur hidup untuk menjangkaumu.",
-      "Aku punya rahasia: setiap kali kamu mengedipkan mata, detak jantungku berhenti sepersekian detik.",
-      "Kamu tahu tidak? Aku menyimpan semua pesan darimu karena itu adalah harta karun terbesarku.",
-      "Kalau cinta itu ilmu pasti, kamu adalah rumus yang tak pernah bisa aku pecahkan tapi selalu ingin kupecahkan.",
-      "Aku sedang menulis buku tentang bagaimana mencintaimu, tapi sepertinya tak akan pernah selesai karena setiap hari ada bab baru.",
-      "Kadang aku berpikir, mungkin kita adalah karakter dalam novel romantis yang sedang dibaca oleh seseorang di alam semesta lain.",
-      "Kalau kamu bertanya berapa kali aku memikirkanmu dalam sehari, jawabannya adalah: 'Sistem sedang error, tak bisa menghitung'.",
-      "Aku sedang melatih burung merpati untuk mengirimkan pesan cinta setiap pagi, tapi mereka selalu kewalahan karena terlalu banyak yang ingin kusampaikan.",
-      "Kamu seperti lagu favorit yang tak pernah bosan kudengar, bahkan ketika sudah hafal semua liriknya.",
-      "Kalau ada kontes 'Gadis Paling Imut Sedunia', kamu akan menang tanpa saingan. Tapi aku tak akan membiarkan siapa pun tahu, karena aku ingin menyimpannya sebagai rahasiaku sendiri.",
-      "Setiap kali kamu mengucapkan namaku, rasanya seperti pertama kali mendengar musik favoritku.",
-      "Aku sedang membangun museum dalam hatiku yang berisi semua momen indah bersamamu. Tiket masuknya gratis, tapi hanya untuk kamu seumur hidup."
-    ];
-    
-    secretBtn.addEventListener("click", function() {
-      playSound();
-      const secretMessage = document.getElementById("secretMessage");
-      secretMessage.style.animation = 'none';
-      void secretMessage.offsetWidth;
-      secretMessage.style.animation = 'floatUp 0.5s ease-out';
-      
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      secretMessage.textContent = messages[randomIndex];
-      
-      // Small hearts effect
-      createHearts(5);
-    });
-    
-    // Hug button
-    hugBtn.addEventListener("click", function() {
-      playSound();
-      createHearts(10);
-      
-      const hugMessages = [
-        "Peluk hangat terkirim! 💕",
-        "Aku mencintaimu lebih dari kata-kata bisa ungkapkan 🤗",
-        "Virtual hug dikirim dengan ekstra erat!",
-        "Pelukku selalu ada untukmu, kapanpun kamu butuh 🌸",
-        "Aku bisa memelukmu sepanjang hari dan tak akan pernah cukup"
-      ];
-      
-      const randomHug = Math.floor(Math.random() * hugMessages.length);
-      alert(hugMessages[randomHug]);
-    });
-    
-    // Promise button
-    promiseBtn.addEventListener("click", function() {
-      playSound();
-      heartSound.play().catch(e => console.log("Heart sound prevented:", e));
-      
-      const promises = [
-        "Aku janji akan selalu membuatmu tersenyum",
-        "Aku janji akan mendengarkan semua ceritamu",
-        "Aku janji akan menjadi tempat teraman untukmu",
-        "Aku janji akan mencintaimu lebih setiap hari",
-        "Aku janji akan selalu berusaha memahami perasaanmu"
-      ];
-      
-      const randomPromise = Math.floor(Math.random() * promises.length);
-      secretMessage.textContent = "Janjiku: " + promises[randomPromise];
-      secretMessage.style.animation = 'none';
-      void secretMessage.offsetWidth;
-      secretMessage.style.animation = 'floatUp 0.5s ease-out';
-      
-      createHearts(15);
-      if (loveLevel < 100) {
-        loveLevel += 5;
-        updateLoveMeter();
-      }
-    });
-    
-    // Memory book navigation
-    function showPage(pageNumber) {
-      document.querySelectorAll('.memory-page').forEach(page => {
-        page.classList.remove('active');
-      });
-      document.getElementById(`page${pageNumber}`).classList.add('active');
-      
-      dots.forEach(dot => {
-        dot.classList.remove('active');
-        if (dot.dataset.page == pageNumber) {
-          dot.classList.add('active');
-        }
-      });
-      
-      currentPage = pageNumber;
-      prevPageBtn.disabled = currentPage === 1;
-      nextPageBtn.disabled = currentPage === totalPages;
-    }
-    
-    prevPageBtn.addEventListener('click', () => {
-      if (currentPage > 1) {
-        playSound();
-        showPage(currentPage - 1);
-      }
-    });
-    
-    nextPageBtn.addEventListener('click', () => {
-      if (currentPage < totalPages) {
-        playSound();
-        showPage(currentPage + 1);
-      }
-    });
-    
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        playSound();
-        showPage(parseInt(dot.dataset.page));
-      });
-    });
-    
-    // Image click
-    let imgClick = 0;
-    document.getElementById("mainImage").addEventListener("click", () => {
-      imgClick++;
-      if (imgClick === 5) {
-        playSound();
-        alert("Kamu ketahuan ngintipin fotonya terus~ Aku juga gitu, selalu tak bisa berhenti memandangmu ❤️");
-        imgClick = 0;
-      }
-    });
-    
-    // Play sound function
-    function playSound() {
-      clickSound.currentTime = 0;
-      clickSound.play().catch(e => console.log("Audio play prevented:", e));
-    }
-    
-    // Initialize
-    window.addEventListener("DOMContentLoaded", () => {
-      // Small animation on load
-      createHearts(10);
-      
-      // Try to play music with user interaction
-      document.body.addEventListener("click", function initAudio() {
-        bgMusic.play().then(() => {
-          bgMusic.pause();
-          bgMusic.currentTime = 0;
-        }).catch(e => console.log("Autoplay prevented:", e));
-        document.body.removeEventListener("click", initAudio);
-      }, { once: true });
-      
-      // Add click sound to all buttons
-      document.querySelectorAll("button").forEach(btn => {
-        btn.addEventListener("click", playSound);
-      });
-      
-      // Initialize love meter
-      updateLoveMeter();
-    });
-  </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <p>Follow Us</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            
+            <p class="copyright">&copy; 2023 Sweet Delights. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
-  </html>
+</html>
