@@ -2,665 +2,640 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kok Bisa Kamu Selucu Itu?</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Chewy&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #5e2a7e;
-      --secondary-color: #ff69b4;
-      --accent-color: #d291ff;
-      --light-color: #ffe6f0;
-      --lighter-color: #f3e8ff;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      --baby-pink: #FFC1CC;
+      --sky-blue: #AEEFFF;
+      --lilac: #E6CCFF;
+      --lemonade: #FFF6A5;
+      --mint: #C0F2D8;
+      --card-bg: rgba(255, 255, 255, 0.8);
     }
     
     body {
-      background: linear-gradient(to bottom right, var(--light-color), var(--lighter-color));
-      font-family: "Nunito", sans-serif;
+      margin: 0;
+      font-family: 'Comic Neue', cursive, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, var(--baby-pink), var(--lilac), var(--sky-blue));
+      color: #5c0066;
       text-align: center;
-      color: var(--primary-color);
-      padding: 15px;
+      padding: 2rem;
+      overflow-x: hidden;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 700px;
-      width: 100%;
-      margin: 20px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 105, 180, 0.2);
     }
     
     h1 {
+      font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 2.5rem);
-      margin-bottom: 20px;
-      color: var(--secondary-color);
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-family: "Dancing Script", cursive;
+      color: #ff1493;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 0 var(--lemonade);
     }
     
-    img, audio, video {
-      max-width: 100%;
-      height: auto;
-      border-radius: 16px;
-      display: block;
-      margin: 0 auto;
+    h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #8a2be2;
     }
     
-    .cake-img {
-      animation: fadeIn 1s ease-in-out;
-      max-height: 300px;
-      object-fit: contain;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+    h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: #ff69b4;
     }
     
     p {
-      margin: 20px 0;
-      line-height: 1.8;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      text-align: left;
-      letter-spacing: 0.5px;
-    }
-    
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
-    
-    button {
-      padding: 12px 24px;
-      background-color: var(--accent-color);
-      color: white;
-      font-family: "Nunito", sans-serif;
       font-size: clamp(1rem, 3vw, 1.1rem);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex: 1 0 auto;
-      min-width: 140px;
-      max-width: 220px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      font-weight: 600;
-    }
-    
-    button:hover {
-      background-color: #a76cd1;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-    
-    button:active {
-      transform: translateY(0);
-    }
-    
-    .birthday-text {
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-      font-weight: bold;
-      color: var(--secondary-color);
-      margin: 25px 0;
-      animation: popIn 1s ease-out;
-      font-family: "Dancing Script", cursive;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    @keyframes popIn {
-      0% { transform: scale(0); opacity: 0; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    
-    @keyframes swing {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(2deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-2deg); }
-      100% { transform: rotate(0deg); }
-    }
-    
-    @keyframes sparkle {
-      0% { transform: scale(1); filter: brightness(1); }
-      50% { transform: scale(1.05); filter: brightness(1.3); }
-      100% { transform: scale(1); filter: brightness(1); }
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff69b4, 0 0 20px #ff69b4; }
-      100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff69b4; }
-    }
-    
-    @keyframes candleFlicker {
-      0%, 100% { opacity: 0.8; transform: scaleY(1); }
-      25% { opacity: 1; transform: scaleY(1.1); }
-      50% { opacity: 0.9; transform: scaleY(0.95); }
-      75% { opacity: 1; transform: scaleY(1.05); }
-    }
-    
-    img.animate-blink:hover {
-      animation: blink 1s infinite;
-    }
-    
-    img.animate-swing:hover {
-      animation: swing 1.2s infinite ease-in-out;
-    }
-    
-    img.animate-sparkle {
-      animation: sparkle 1.5s infinite, float 3s ease-in-out infinite;
-    }
-    
-    #secretMessage {
-      margin: 25px 0;
-      font-weight: bold;
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-      min-height: 4em;
-      padding: 15px;
-      background-color: rgba(210, 145, 255, 0.1);
-      border-radius: 10px;
-      border-left: 4px solid var(--accent-color);
-      font-family: "Nunito", sans-serif;
       line-height: 1.6;
     }
     
-    strong {
-      font-weight: 700;
-      color: var(--primary-color);
+    .love {
+      font-family: 'Chewy', cursive;
+      animation: float 3s ease-in-out infinite;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: #ff1493;
+      text-shadow: 1px 1px 0 var(--lemonade);
     }
     
-    em {
-      font-style: italic;
-      color: var(--secondary-color);
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
     
-    /* Decorative elements */
-    .corner-decoration {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      opacity: 0.1;
+    .card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(174, 239, 255, 0.4);
+      transition: transform 0.3s;
+      border: 2px solid var(--mint);
+      background-image: linear-gradient(to bottom right, rgba(255, 193, 204, 0.2), rgba(230, 204, 255, 0.2));
     }
     
-    .top-left {
-      top: 10px;
-      left: 10px;
-      border-top: 2px solid var(--secondary-color);
-      border-left: 2px solid var(--secondary-color);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(174, 239, 255, 0.6);
     }
     
-    .top-right {
-      top: 10px;
-      right: 10px;
-      border-top: 2px solid var(--secondary-color);
-      border-right: 2px solid var(--secondary-color);
-    }
-    
-    .bottom-left {
-      bottom: 10px;
-      left: 10px;
-      border-bottom: 2px solid var(--secondary-color);
-      border-left: 2px solid var(--secondary-color);
-    }
-    
-    .bottom-right {
-      bottom: 10px;
-      right: 10px;
-      border-bottom: 2px solid var(--secondary-color);
-      border-right: 2px solid var(--secondary-color);
-    }
-    
-    /* Birthday effects */
-    .birthday-effect {
+    .confetti {
       position: fixed;
-      pointer-events: none;
-      z-index: 1000;
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    .candle {
-      position: absolute;
       width: 10px;
-      height: 30px;
-      background: linear-gradient(to bottom, #ff9a00, #ff5e00);
-      border-radius: 5px 5px 0 0;
-      animation: candleFlicker 2s infinite alternate;
+      height: 10px;
+      background-color: var(--baby-pink);
+      opacity: 0;
+      animation: confetti 5s ease-in-out infinite;
+      z-index: 1000;
     }
     
-    .flame {
+    @keyframes confetti {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    
+    .gallery img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      background: linear-gradient(45deg, var(--lemonade), var(--mint));
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(174, 239, 255, 0.6);
+    }
+    
+    .countdown {
+      font-family: 'Chewy', cursive;
+      font-size: 1.2rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #ff1493;
+      text-shadow: 1px 1px 0 var(--lemonade);
+    }
+    
+    .typing {
+      font-family: 'Chewy', cursive;
+      border-right: 2px solid var(--baby-pink);
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      color: #8a2be2;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--baby-pink) }
+    }
+    
+    .quote {
+      font-family: 'Chewy', cursive;
+      font-style: italic;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: rgba(255, 246, 165, 0.7);
+      border-radius: 10px;
+      max-width: 500px;
+      border: 2px dashed var(--lilac);
+      color: #8a2be2;
+    }
+    
+    .story-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(174, 239, 255, 0.4);
+      text-align: left;
+      position: relative;
+      border: 2px solid var(--sky-blue);
+    }
+    
+    .story-card::before {
+      content: "";
       position: absolute;
-      width: 15px;
-      height: 25px;
-      background: linear-gradient(to top, #ff5e00, #ffdc00);
-      border-radius: 50% 50% 20% 20%;
-      filter: blur(5px);
-      animation: candleFlicker 1.5s infinite alternate;
-      top: -20px;
-      left: -2.5px;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: linear-gradient(to right, var(--baby-pink), var(--lilac));
     }
     
-    .balloon {
-      width: 40px;
-      height: 50px;
-      border-radius: 50%;
-      position: absolute;
-      animation: float 6s ease-in-out infinite;
+    .story-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 15px 0;
+      border: 4px solid white;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
     
-    .balloon-string {
-      position: absolute;
-      width: 2px;
-      height: 60px;
-      background-color: #ccc;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+    .audio-container {
+      margin: 20px auto;
     }
     
-    .glow-text {
-      animation: glow 1.5s ease-in-out infinite alternate;
-    }
-    
-    /* Mobile specific styles */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-        border-radius: 15px;
-      }
-      
-      p {
-        margin: 15px 0;
-      }
-      
-      .button-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      button {
-        width: 100%;
-        max-width: none;
-        padding: 10px 20px;
-      }
-      
-      #mainImage {
-        max-height: 250px;
-      }
-    }
-    
-    /* Accessibility improvements */
-    button:focus, img:focus {
-      outline: 2px solid var(--secondary-color);
-      outline-offset: 2px;
-    }
-    
-    /* Hide audio controls on mobile when not needed */
     audio {
       width: 100%;
       max-width: 300px;
-      margin: 15px auto;
     }
     
-    /* Print styles */
-    @media print {
+    .cake-button {
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(to right, var(--baby-pink), var(--lilac));
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+    
+    .cake-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      background: linear-gradient(to right, var(--lilac), var(--baby-pink));
+    }
+    
+    .cake-button:active {
+      transform: translateY(1px);
+    }
+    
+    /* Birthday Elements Animation */
+    .birthday-element {
+      position: fixed;
+      z-index: 1000;
+      pointer-events: none;
+      animation: float-up 5s ease-in forwards;
+      font-size: 30px;
+      user-select: none;
+    }
+    
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+      }
+    }
+    
+    .balloon {
+      animation: balloon-float 6s ease-in forwards, balloon-sway 3s ease-in-out infinite;
+    }
+    
+    @keyframes balloon-float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes balloon-sway {
+      0%, 100% { transform: translateX(-5px) rotate(-5deg); }
+      50% { transform: translateX(5px) rotate(5deg); }
+    }
+    
+    .heart {
+      animation: heartbeat 1s infinite alternate;
+    }
+    
+    @keyframes heartbeat {
+      to { transform: scale(1.3); }
+    }
+    
+    .ribbon {
+      animation: ribbon-twirl 4s linear infinite;
+    }
+    
+    @keyframes ribbon-twirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .birthday-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Chewy', cursive;
+      font-size: 3rem;
+      color: white;
+      text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
+      z-index: 2000;
+      opacity: 0;
+      animation: message-pop 2s ease-out forwards;
+    }
+    
+    @keyframes message-pop {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+      20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+      40% { opacity: 1; transform: translate(-50%, -50%) scale(0.9); }
+      60% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      80% { opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    .birthday-audio {
+      display: none;
+    }
+    
+    @media (max-width: 480px) {
       body {
-        background: white;
-        color: black;
+        padding: 1rem;
       }
       
-      .container {
-        box-shadow: none;
-        border: 1px solid #ddd;
+      .card, .story-card {
+        padding: 1rem;
       }
       
-      button {
-        display: none;
+      .gallery img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .birthday-message {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="corner-decoration top-left"></div>
-    <div class="corner-decoration top-right"></div>
-    <div class="corner-decoration bottom-left"></div>
-    <div class="corner-decoration bottom-right"></div>
-    
-    <h1>Kok Bisa Kamu Selucu Itu?</h1>
-    <img id="mainImage" src="file_0000000058e062308ed04b1cc3b45d89.png" alt="Ilustrasi Sindy Imooeett sedang masak roti" class="animate-blink animate-swing" tabindex="0" />
-    
-    <p>💌 Cerita kocak Sindy Imooeett:</p>
+
+  <h1>🎀 Kok Bisa Kamu Selucu Itu? 🎀</h1>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="card">
+    <h2 class="love">💌 Selamat Ulang Tahun Sindy Imut 💌</h2>
     <p>
-      <strong>
-        "Roti Manis, Gosong, dan Si Gemoy yang Gagal Bareng Tapi Bahagia"<br><br>
-
-        Untuk Sindy Imooeett, si gadis kecil paling aktif, lembut di hati, dan penuh drama menggemaskan...<br><br>
-
-        Awalnya kupikir itu hari biasa.<br>
-        Pelatihan bikin roti manis, belajar ngulen, tunggu proofing, terus pulang.<br>
-        Tapi... aku malah ketemu kamu — si kecil, imooeett, lucu, menggemaskan, rambut berantakan (di balik hijab yang tetap on point), dengan ekspresi <em>"akan aku hadapi dunia... asal rotiku ngembang".</em><br><br>
-
-        Kamu berdiri di depan oven, menatap hasilmu.<br>
-        Pinggirannya gosong, tengahnya belum matang.<br>
-        Kamu melihatku, lalu berbisik pelan:<br><br>
-
-        <em>"Gemoy... rotiku gagal... aku kayaknya juga gagal hidup..."</em><br><br>
-
-        Aku nggak bisa jawab. Karena pas itu... rotiku juga gosong.<br>
-        Dua roti bersaudara. Dua hati yang penuh arang. 😔🍞<br><br>
-
-        Lalu datanglah sang accessor, berdiri kayak tokoh antagonis sinetron masak.<br><br>
-
-        <em>"Roti yang gosong dan tidak matang sempurna bisa memengaruhi kelulusan ujian ini."</em><br><br>
-
-        Sindy langsung freeze.<br>
-        Kamu peluk diri sendiri, napas cepat.<br>
-        Lalu suara lirih keluar:<br><br>
-
-        <em>"Aku... nggak lulus...? Karena rotiku...?"</em><br><br>
-
-        Tapi tiba-tiba accessor lanjut:<br><br>
-
-        <em>"Tapi karena semangat dan prosesmu luar biasa... kamu tetap LULUS!"</em><br><br>
-
-        Dan Sindy Imooeett pun...<br><br>
-
-        Menangis sesenggukan.<br>
-        Beneran nangis beneran.<br>
-        Kayak adegan drama Korea episode 14.<br><br>
-
-        Kamu merangkulku pelan, air mata jatuh sambil lihat roti gosong di tanganmu.<br>
-        Aku pun tak bisa menahan tawa di sebelahmu, nyodorin rotiku yang sama-sama gosong, lalu bilang:<br><br>
-
-        <em>"Nih... rotiku juga gosong... tapi rasanya manis... karena ada kamu."</em><br><br>
-
-        Kamu pun tambah kenceng nangisnya sambil bilang:<br><br>
-
-        <em>"Gemooooyyyy... kamu tuh yaaaa... nyebelin bangetttt... aku tu cuma ga terima di prank"</em><br><br>
-
-        Dan dari hari itulah aku tahu...<br>
-        Sindy Imooeett bukan cuma gadis yang dramanya bisa satu season penuh,<br>
-        tapi juga gadis yang berhasil bikin hatiku ngembang sempurna setiap hari.<br><br>
-
-        Selamat ulang tahun yaa, Imooeett~<br>
-        Semoga hidupmu kayak roti: hangat, manis, dan selalu bikin orang di sekitarmu bahagia meski kadang pinggirnya gosong sedikit 💖<br><br>
-
-        Dari si Gemoy,<br>
-        Jimmy – chef yang hampir gagal, gagal ngedapetin kamu😙😙🤏🤏
-      </strong>
+      Haiii Sindy Imoettt yang paling lucu seduniaa!! 🥺💕<br><br>
+      Hari ini tanggal bersejarah banget... karena 18 tahun lalu, lahirlah manusia paling imut, paling nyebelin, paling ngangenin, dan paling bikin aku senyum-senyum sendiri setiap hari: <b>KAMUUUU</b> 😚💘<br><br>
+      Selamat ulang tahun yang ke-18 yaa, pacarku yang paling kecil tapi juga paling besar di hatiku! 🎂✨<br><br>
+      Aku tahu tahun ini kita LDR, tapi rasanya aku tetep mau hadir di hari spesialmu... lewat cara yang lucu dan nyebelin dikit 😝<br><br>
+      Terima kasih udah hadir di hidupku, bikin semuanya lebih warna-warni, lebih manis, lebih rame, dan pastinya... lebih lucu!<br><br>
+      Doaku buat kamu hari ini:<br>
+      Semoga kamu sehat, bahagia, tambah glowing, makin disayang banyak orang...<br>
+      Tapi terutama, makin sayang sama akuuu~ 🥹💗<br><br>
+      Dari jauh aku peluk kamu, sambil bisik:<br>
+      <i>"Kok bisa sih kamu selucu itu???"</i> �🎀<br><br>
+      <b id="typing-text"></b><br><br>
+      - Yang (katanya) paling sayang kamu 💘
     </p>
-
-    <div class="button-container">
-      <button id="cakeBtn">Klik Buat Kue Cantik</button>
-      <button id="secretBtn">Buka Pesan Rahasia</button>
-      <button id="hugBtn">Peluk Virtual</button>
-    </div>
-
-    <p id="secretMessage"></p>
   </div>
 
-  <audio id="bg-music" loop>
-    <source src="happy-birthday-my-kitty-120918.mp3" type="audio/mpeg" />
-    Browser kamu belum bisa mutar musik lucu ini.
+  <button class="cake-button" id="cakeButton">
+    🎂 Tekan untuk Kuenya! 🎂
+  </button>
+
+  <div class="audio-container">
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <p><small>Pesan suara spesial untukmu 💕</small></p>
+  </div>
+
+  <audio class="birthday-audio" id="birthdayAudio">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
   </audio>
 
+  <div class="quote" id="random-quote"></div>
+
+  <div class="story-card">
+    <h2>💌 Cerita kocak Sindy Imooeett:</h2>
+    <h3>"Roti Manis, Gosong, dan Si Gemoy yang Gagal Bareng Tapi Bahagia"</h3>
+    
+    <img src="https://images.unsplash.com/photo-1608190003443-86b2636f2fe3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Roti Manis" class="story-image">
+    
+    <p>
+      Untuk Sindy Imooeett, si gadis berhijab paling chaotic, lembut di hati, dan penuh drama menggemaskan…<br><br>
+      
+      Awalnya kupikir itu hari biasa.<br>
+      Pelatihan bikin roti manis, belajar ngulen, tunggu proofing, terus pulang.<br>
+      Tapi... aku malah ketemu kamu — si pemilik celemek belepotan, rambut berantakan (di balik hijab yang tetap on point), dan ekspresi <br><br>
+      
+      <i>"aku sanggup hadapi hidup… asal rotiku ngembang".</i><br><br>
+      
+      Kamu berdiri di depan oven, menatap hasilmu.<br>
+      Pinggirannya gosong, tengahnya belum matang.<br>
+      Kamu melihatku, lalu berbisik pelan:<br><br>
+      
+      <i>"Gemoy... rotiku gagal... aku kayaknya juga gagal hidup..."</i><br><br>
+      
+      Aku nggak bisa jawab. Karena pas itu... rotiku juga gosong.<br>
+      Dua roti bersaudara. Dua hati yang penuh arang. 😔🍞<br><br>
+      
+      <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Roti Gosong" class="story-image">
+      
+      Lalu datanglah sang accessor, berdiri kayak tokoh antagonis sinetron masak.<br><br>
+      
+      <i>"Roti yang gosong dan tidak matang sempurna bisa memengaruhi kelulusan ujian ini."</i><br><br>
+      
+      Sindy langsung freeze.<br>
+      Kamu peluk diri sendiri, napas cepat.<br>
+      Lalu suara lirih keluar:<br><br>
+      
+      <i>"Aku... nggak lulus...? Karena rotiku...?"</i><br><br>
+      
+      Tapi tiba-tiba accessor lanjut:<br><br>
+      
+      <i>"Tapi karena semangat dan prosesmu luar biasa... kamu tetap LULUS!"</i><br><br>
+      
+      Dan Sindy Imooeett pun...<br><br>
+      
+      Menangis sesenggukan.<br>
+      Beneran nangis beneran.<br>
+      Kayak adegan drama Korea episode 14.<br><br>
+      
+      Kamu duduk pelan, air mata jatuh sambil lihat roti gosong di tanganmu.<br>
+      Aku duduk di sebelahmu, nyodorin rotiku yang sama-sama gosong, lalu bilang:<br><br>
+      
+      <i>"Nih… rotiku juga gosong… tapi rasanya manis… karena ada kamu."</i><br><br>
+      
+      Kamu pun tambah kenceng nangisnya sambil bilang:<br><br>
+      
+      <i>"Gemooooyyyy... kamu tuh yaaaa... nyebelin bangetttt... tapi aku sayang kamu 🥲💗"</i><br><br>
+      
+      Dan dari hari itulah aku tahu...<br>
+      Sindy Imooeett bukan cuma gadis yang dramanya bisa satu season penuh,<br>
+      tapi juga gadis yang berhasil bikin hatiku ngembang sempurna setiap hari.<br><br>
+      
+      <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Merayakan" class="story-image">
+      
+      Selamat ulang tahun yaa, Imooeett~<br>
+      Semoga hidupmu kayak roti: hangat, manis, dan selalu bikin orang di sekitarmu bahagia meski kadang pinggirnya gosong sedikit 💖<br><br>
+      
+      <i>Dari si Gemoyyy,<br>
+      Jimmy – chef yang hampir gagal ngedapetin kamuu😚🤏</i>
+    </p>
+  </div>
+
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+Kalian+1" alt="Kenangan 1">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+Kalian+2" alt="Kenangan 2">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+Kalian+3" alt="Kenangan 3">
+    <img src="https://via.placeholder.com/300x300.png?text=Foto+Kalian+4" alt="Kenangan 4">
+  </div>
+
   <script>
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      const bgMusic = document.getElementById("bg-music");
-      const cakeBtn = document.getElementById("cakeBtn");
-      const secretBtn = document.getElementById("secretBtn");
-      const hugBtn = document.getElementById("hugBtn");
-      const secretMessage = document.getElementById("secretMessage");
-      const mainImage = document.getElementById("mainImage");
+    // Confetti effect
+    function createConfetti() {
+      const colors = ['#FFC1CC', '#AEEFFF', '#E6CCFF', '#FFF6A5', '#C0F2D8'];
+      const confettiCount = 50;
       
-      // Initial confetti
-      confetti({ 
-        particleCount: 100, 
-        spread: 70, 
-        origin: { y: 0.6 } 
-      });
-      
-      // Mute audio by default
-      bgMusic.muted = true;
-      
-      // Create birthday effects
-      function createBirthdayEffects() {
-        // Create floating candles
-        for (let i = 0; i < 5; i++) {
-          setTimeout(() => {
-            const candle = document.createElement('div');
-            candle.className = 'birthday-effect';
-            candle.style.left = `${Math.random() * 100}%`;
-            candle.style.top = `${Math.random() * 100}%`;
-            
-            const candleBody = document.createElement('div');
-            candleBody.className = 'candle';
-            
-            const flame = document.createElement('div');
-            flame.className = 'flame';
-            
-            candle.appendChild(candleBody);
-            candle.appendChild(flame);
-            document.body.appendChild(candle);
-            
-            // Remove after animation
-            setTimeout(() => {
-              candle.remove();
-            }, 10000);
-          }, i * 500);
-        }
+      for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confetti.style.animationDelay = Math.random() + 's';
+        document.body.appendChild(confetti);
         
-        // Create floating balloons
-        const colors = ['#ff69b4', '#5e2a7e', '#d291ff', '#ff9a00', '#00c9ff'];
-        for (let i = 0; i < 10; i++) {
-          setTimeout(() => {
-            const balloon = document.createElement('div');
-            balloon.className = 'birthday-effect balloon';
-            balloon.style.left = `${Math.random() * 100}%`;
-            balloon.style.top = '100%';
-            balloon.style.backgroundColor = colors[i % colors.length];
-            balloon.style.animationDuration = `${5 + Math.random() * 5}s`;
-            
-            const string = document.createElement('div');
-            string.className = 'balloon-string';
-            
-            balloon.appendChild(string);
-            document.body.appendChild(balloon);
-            
-            // Remove after animation
-            setTimeout(() => {
-              balloon.remove();
-            }, 15000);
-          }, i * 300);
-        }
-      }
-      
-      // Cake button functionality
-      cakeBtn.addEventListener("click", function() {
-        // Remove existing cake if any
-        const existingCake = document.querySelector(".cake-img");
-        if (existingCake) existingCake.remove();
-        
-        // Remove existing birthday text if any
-        const existingText = document.querySelector(".birthday-text");
-        if (existingText) existingText.remove();
-        
-        // Create and add cake image
-        const cakeImg = document.createElement("img");
-        cakeImg.src = "20250526_155431_0000.png";
-        cakeImg.alt = "Kue Cantik Ulang Tahun";
-        cakeImg.classList.add("cake-img", "animate-sparkle");
-        document.querySelector(".container").insertBefore(cakeImg, document.querySelector("p"));
-        
-        // Add birthday text with glow effect
-        const text = document.createElement("div");
-        text.textContent = "Selamat Ulang Tahun, Imooeett!";
-        text.className = "birthday-text glow-text";
-        document.querySelector(".container").insertBefore(text, cakeImg.nextSibling);
-        
-        // Enhanced confetti effect
-        const duration = 5 * 1000;
-        const animationEnd = Date.now() + duration;
-        const colors = ['#ff69b4', '#ffccff', '#ffc0cb', '#ffffff', '#d291ff'];
-        
-        (function frame() {
-          confetti({
-            particleCount: 10,
-            angle: 60,
-            spread: 75,
-            origin: { x: 0 },
-            colors,
-            shapes: ['circle', 'star']
-          });
-          confetti({
-            particleCount: 10,
-            angle: 120,
-            spread: 75,
-            origin: { x: 1 },
-            colors,
-            shapes: ['circle', 'star']
-          });
-          
-          // Add some heart-shaped confetti
-          if (Date.now() % 3 === 0) {
-            confetti({
-              particleCount: 3,
-              angle: 90,
-              spread: 70,
-              origin: { y: 0.5 },
-              colors: ['#ff69b4'],
-              shapes: ['heart']
-            });
-          }
-          
-          if (Date.now() < animationEnd) requestAnimationFrame(frame);
-        })();
-        
-        // Create birthday effects
-        createBirthdayEffects();
-        
-        // Keep creating effects periodically
-        const effectInterval = setInterval(createBirthdayEffects, 3000);
-        
-        // Stop effects after 15 seconds
+        // Remove confetti after animation
         setTimeout(() => {
-          clearInterval(effectInterval);
-        }, 15000);
-        
-        // Play music when cake button is clicked
-        bgMusic.muted = false;
-        bgMusic.play().catch(e => {
-          console.log("Audio play prevented:", e);
-          // Show alert if autoplay is blocked
-          alert("Silakan klik 'OK' lalu klik tombol lagi untuk memutar musik");
-        });
-      });
-      
-      // Secret messages array
-      const messages = [
-        "Kenapa kamu nggak boleh jadi astronot? Karena nanti alien ikutan jatuh cinta!",
-        "Kalau kamu jadi kucing, pasti kamu ngeong sambil drama sinetron.",
-        "Kamu itu kayak Wi-Fi lemot... ngeselin, tapi aku tetap nungguin.",
-        "Pernah mikir kamu tuh glitch di semesta: lucu, random, tapi bikin dunia lebih seru.",
-        "Kamu kayak alarm jam 5 pagi — gangguin tidurku tapi aku nggak bisa marah.",
-        "Denger kamu ketawa tuh kayak dapet diskon 90% di hari tanggal tua.",
-        "Kamu pernah mikir nggak kalau kamu itu karakter anime yang nyasar ke dunia nyata?",
-        "Kalau aku punya 1 detik tiap kamu nyebelin, aku udah punya 3 abad buat sayang kamu.",
-        "Kamu lucunya kayak meme yang nggak bisa dijelasin tapi semua orang ketawa.",
-        "Kalau ada lomba ekspresi drama sambil makan roti, kamu pasti dapet medali emas.",
-        "Kadang aku mikir... kamu beneran manusia? Soalnya kadang kayak NPC error.",
-        "Kamu kayak loading bar stuck di 99% — bikin deg-degan terus!",
-        "Kalau kamu jadi superhero, kekuatanmu pasti 'menggemaskan musuh sampai nyerah'.",
-        "Kamu itu kayak typo — bikin kesel, tapi sayang banget buat dihapus.",
-        "Sumpah, kalau ada emoji Sindy, itu pasti campuran antara nangis, ngakak, dan ngegemes.",
-        "Kamu lucunya ilegal. Harusnya ditangkap biar aku bisa simpen kamu di hati terus.",
-        "Kalau dunia ini komik, kamu pasti panel paling chaos dan paling ditunggu-tunggu tiap halaman.",
-        "Satu-satunya virus yang aku rela kena: sindrom 'Kangen Sindy Level Kronis'."
+          confetti.remove();
+        }, 5000);
+      }
+    }
+    
+    // Create birthday elements (balloons, hearts, ribbons)
+    function createBirthdayElements() {
+      const elements = [
+        { type: 'balloon', emoji: '🎈', colors: ['#FFC1CC', '#AEEFFF', '#E6CCFF', '#FFF6A5', '#C0F2D8'] },
+        { type: 'heart', emoji: '💖', colors: ['#FF1493', '#FF69B4', '#DB7093'] },
+        { type: 'ribbon', emoji: '🎀', colors: ['#FFC1CC', '#E6CCFF', '#FFF6A5'] }
       ];
       
-      // Secret button functionality
-      secretBtn.addEventListener("click", function() {
-        const randomIndex = Math.floor(Math.random() * messages.length);
-        secretMessage.textContent = messages[randomIndex];
-        secretMessage.style.animation = "fadeIn 0.5s ease-in-out";
+      // Create 100 elements
+      for (let i = 0; i < 100; i++) {
         setTimeout(() => {
-          secretMessage.style.animation = "";
-        }, 500);
-      });
-      
-      // Hug button functionality
-      hugBtn.addEventListener("click", function() {
-        alert('Peluk virtual terkirim! Tapi kalau kamu mau yang nyata, tinggal panggil aja si Gemoy~');
-        // Add a little heart animation
-        for (let i = 0; i < 5; i++) {
+          const elementType = elements[Math.floor(Math.random() * elements.length)];
+          const element = document.createElement('div');
+          element.className = `birthday-element ${elementType.type}`;
+          element.innerHTML = elementType.emoji;
+          element.style.left = `${Math.random() * 100}vw`;
+          element.style.fontSize = `${Math.random() * 20 + 30}px`;
+          element.style.color = elementType.colors[Math.floor(Math.random() * elementType.colors.length)];
+          element.style.animationDuration = `${Math.random() * 3 + 3}s`;
+          
+          document.body.appendChild(element);
+          
+          // Remove element after animation
           setTimeout(() => {
-            confetti({
-              particleCount: 3,
-              spread: 70,
-              origin: { y: 0.8 },
-              shapes: ['heart'],
-              colors: ['#ff69b4']
-            });
-          }, i * 200);
-        }
-      });
+            element.remove();
+          }, 5000);
+        }, i * 100);
+      }
       
-      // Image click counter
-      let imgClick = 0;
-      mainImage.addEventListener("click", function() {
-        imgClick++;
-        if (imgClick === 5) {
-          alert("Kamu ketahuan ngintipin rotinya terus~ Sabar ya, itu gosong karena cinta!");
-          imgClick = 0; // Reset counter
-        }
-      });
+      // Show birthday message
+      const message = document.createElement('div');
+      message.className = 'birthday-message';
+      message.textContent = 'Selamat Ulang Tahun Sindy!';
+      document.body.appendChild(message);
       
-      // Keyboard accessibility for image
-      mainImage.addEventListener("keydown", function(e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          this.click();
-        }
-      });
+      // Remove message after animation
+      setTimeout(() => {
+        message.remove();
+      }, 2000);
+    }
+    
+    // Create confetti on page load and every 10 seconds
+    createConfetti();
+    setInterval(createConfetti, 10000);
+    
+    // Typing effect
+    const messages = [
+      "I love youuu Sindy Imut, dan selamat ulang tahun yaa~",
+      "Kamu adalah yang terbaik!",
+      "Aku sayang kamu lebih dari apapun!",
+      "Selamat ulang tahun sayangku!"
+    ];
+    
+    let currentMessage = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function typeWriter() {
+      const textElement = document.getElementById('typing-text');
+      const currentText = messages[currentMessage];
+      
+      if (isDeleting) {
+        textElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        textElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+      }
+      
+      if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true;
+        typingSpeed = 1500; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        currentMessage = (currentMessage + 1) % messages.length;
+        typingSpeed = 500; // Pause before typing next
+      }
+      
+      setTimeout(typeWriter, typingSpeed);
+    }
+    
+    // Start typing effect
+    setTimeout(typeWriter, 1000);
+    
+    // Countdown to next birthday
+    function updateCountdown() {
+      const now = new Date();
+      const nextBirthday = new Date(now.getFullYear() + 1, 5, 6); // June 6th next year
+      if (now.getMonth() > 5 || (now.getMonth() === 5 && now.getDate() > 6)) {
+        nextBirthday.setFullYear(now.getFullYear() + 1);
+      }
+      
+      const diff = nextBirthday - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('countdown').innerHTML = `
+        Hitung mundur ke ultah berikutnya:<br>
+        ${days} hari ${hours} jam ${minutes} menit ${seconds} detik
+      `;
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // Random quotes
+    const quotes = [
+      "Cinta sejati tidak pernah berakhir dengan kata selamat tinggal. Cinta sejati berlanjut selamanya.",
+      "Kamu adalah alasan aku tersenyum setiap hari.",
+      "Aku tidak memilih jatuh cinta padamu, tapi aku memilih untuk tetap mencintaimu selamanya.",
+      "Cinta itu seperti angin, kamu tidak bisa melihatnya tapi bisa merasakannya.",
+      "Bersamamu adalah tempat favoritku di dunia ini.",
+      "Aku mencintaimu bukan hanya karena siapa dirimu, tapi karena siapa diriku ketika bersamamu."
+    ];
+    
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('random-quote').textContent = quotes[randomIndex];
+    }
+    
+    showRandomQuote();
+    
+    // Change quote every 10 seconds
+    setInterval(showRandomQuote, 10000);
+    
+    // Cake button functionality
+    const cakeButton = document.getElementById('cakeButton');
+    const birthdayAudio = document.getElementById('birthdayAudio');
+    
+    cakeButton.addEventListener('click', function() {
+      // Play birthday audio
+      birthdayAudio.currentTime = 0;
+      birthdayAudio.play();
+      
+      // Create birthday elements
+      createBirthdayElements();
+      
+      // Create extra confetti
+      for (let i = 0; i < 200; i++) {
+        setTimeout(() => {
+          createConfetti();
+        }, i * 50);
+      }
     });
   </script>
+
 </body>
-</html>
+      </html>
