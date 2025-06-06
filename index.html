@@ -211,91 +211,19 @@
       max-width: 300px;
     }
     
-    .cake-button {
-      font-family: 'Chewy', cursive;
-      background: linear-gradient(to right, var(--baby-pink), var(--lilac));
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      cursor: pointer;
+    .custom-cake-button {
+      display: block;
       margin: 20px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      max-width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border-radius: 15px;
+      border: 3px solid white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: all 0.3s;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     }
     
-    .cake-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      background: linear-gradient(to right, var(--lilac), var(--baby-pink));
-    }
-    
-    .cake-button:active {
-      transform: translateY(1px);
-    }
-    
-    /* Birthday Elements Animation */
-    .birthday-element {
-      position: fixed;
-      z-index: 1000;
-      pointer-events: none;
-      animation: float-up 5s ease-in forwards;
-      font-size: 30px;
-      user-select: none;
-    }
-    
-    @keyframes float-up {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) scale(1);
-        opacity: 0;
-      }
-    }
-    
-    .balloon {
-      animation: balloon-float 6s ease-in forwards, balloon-sway 3s ease-in-out infinite;
-    }
-    
-    @keyframes balloon-float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    @keyframes balloon-sway {
-      0%, 100% { transform: translateX(-5px) rotate(-5deg); }
-      50% { transform: translateX(5px) rotate(5deg); }
-    }
-    
-    .heart {
-      animation: heartbeat 1s infinite alternate;
-    }
-    
-    @keyframes heartbeat {
-      to { transform: scale(1.3); }
-    }
-    
-    .ribbon {
-      animation: ribbon-twirl 4s linear infinite;
-    }
-    
-    @keyframes ribbon-twirl {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .custom-cake-button:hover {
+      transform: scale(1.05);
     }
     
     .birthday-message {
@@ -342,12 +270,16 @@
       .birthday-message {
         font-size: 2rem;
       }
+      
+      .custom-cake-button {
+        max-width: 250px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>🎀 Kok Bisa Kamu Selucu Itu? 🎀</h1>
+  <h1>🎀 Kok Bisa Kamu Selucu Itu? �</h1>
 
   <div class="countdown" id="countdown"></div>
 
@@ -369,9 +301,7 @@
     </p>
   </div>
 
-  <button class="cake-button" id="cakeButton">
-    🎂 Tekan untuk Kuenya! 🎂
-  </button>
+  <img src="your-image.jpg" alt="Kue Spesial" class="custom-cake-button" id="cakeButton">
 
   <div class="audio-container">
     <audio controls>
@@ -496,47 +426,6 @@
       }
     }
     
-    // Create birthday elements (balloons, hearts, ribbons)
-    function createBirthdayElements() {
-      const elements = [
-        { type: 'balloon', emoji: '🎈', colors: ['#FFC1CC', '#AEEFFF', '#E6CCFF', '#FFF6A5', '#C0F2D8'] },
-        { type: 'heart', emoji: '💖', colors: ['#FF1493', '#FF69B4', '#DB7093'] },
-        { type: 'ribbon', emoji: '🎀', colors: ['#FFC1CC', '#E6CCFF', '#FFF6A5'] }
-      ];
-      
-      // Create 100 elements
-      for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-          const elementType = elements[Math.floor(Math.random() * elements.length)];
-          const element = document.createElement('div');
-          element.className = `birthday-element ${elementType.type}`;
-          element.innerHTML = elementType.emoji;
-          element.style.left = `${Math.random() * 100}vw`;
-          element.style.fontSize = `${Math.random() * 20 + 30}px`;
-          element.style.color = elementType.colors[Math.floor(Math.random() * elementType.colors.length)];
-          element.style.animationDuration = `${Math.random() * 3 + 3}s`;
-          
-          document.body.appendChild(element);
-          
-          // Remove element after animation
-          setTimeout(() => {
-            element.remove();
-          }, 5000);
-        }, i * 100);
-      }
-      
-      // Show birthday message
-      const message = document.createElement('div');
-      message.className = 'birthday-message';
-      message.textContent = 'Selamat Ulang Tahun Sindy!';
-      document.body.appendChild(message);
-      
-      // Remove message after animation
-      setTimeout(() => {
-        message.remove();
-      }, 2000);
-    }
-    
     // Create confetti on page load and every 10 seconds
     createConfetti();
     setInterval(createConfetti, 10000);
@@ -636,8 +525,16 @@
       birthdayAudio.currentTime = 0;
       birthdayAudio.play();
       
-      // Create birthday elements
-      createBirthdayElements();
+      // Show birthday message
+      const message = document.createElement('div');
+      message.className = 'birthday-message';
+      message.textContent = 'Selamat Ulang Tahun Sindy!';
+      document.body.appendChild(message);
+      
+      // Remove message after animation
+      setTimeout(() => {
+        message.remove();
+      }, 2000);
       
       // Create extra confetti
       for (let i = 0; i < 200; i++) {
@@ -649,4 +546,4 @@
   </script>
 
 </body>
-      </html>
+</html>
