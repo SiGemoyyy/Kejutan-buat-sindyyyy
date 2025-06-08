@@ -475,7 +475,7 @@
     // Countdown to next birthday
     function updateCountdown() {
       const now = new Date();
-      const nextBirthday = new Date(now.getFullYear() + 1, 5, 6); // June 6th next year
+      const nextBirthday = new Date(now.getFullYear(), 5, 26); // June 6th next year
       if (now.getMonth() > 5 || (now.getMonth() === 5 && now.getDate() > 6)) {
         nextBirthday.setFullYear(now.getFullYear() + 1);
       }
